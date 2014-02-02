@@ -110,13 +110,12 @@ $(document).ready(function(){
 
                   <tbody data-bind="foreach : $parent.groupedClasses()[$data]">
                     <tr>
-                      <td> <span data-bind="text : name"></span><br>    
-                      <button class="btn btn-info"> INFO </button>                    
-                        <button class="btn btn-success" 
-                        data-bind="text : followed()? 'Unfollow' : 'Follow'" ></button>
-                      </td>
+                      <td> <span data-bind="text : name"></span></td>
                       <td data-bind="text : enrollment() + '/' + max_enrollment"></td>
                     </tr>
+                    <tr><td><button class="btn btn-info"> INFO </button>                    
+                        <button class="btn btn-success" 
+                        data-bind="text : followed()? 'Unfollow' : 'Follow'" ></button></td></tr>
                   </tbody>
 
                 </table>
