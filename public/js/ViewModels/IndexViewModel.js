@@ -18,6 +18,14 @@ function IndexViewModel(repository, element){
 		}
 	});
 
+	ko.bindingHandlers.info = {
+		init : function(element, valueAccessor){
+			$(element).click(function(){
+				window.open("/info");
+			});
+		}
+	}
+
 	ko.bindingHandlers.toggle = {
 		init : function(element, valueAccessor){
 			$(element).click(function(){

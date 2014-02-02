@@ -115,7 +115,7 @@ $(document).ready(function(){
                     </tr>
                     <tr>
                       <td>
-                        <button class="btn btn-info"> INFO </button>                        
+                        <button data-bind="info : $data" class="btn btn-info"> INFO </button>                        
                         <button class="btn btn-success" 
                           data-bind="toggle : $data, text : followed()? 'Unfollow' : 'Follow'" >
                         </button>
