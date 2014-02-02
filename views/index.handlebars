@@ -108,9 +108,11 @@ $(document).ready(function(){
                     <tr>
                       <td data-bind="text : name"></td>
                       <td data-bind="text : enrollment() + '/' + max_enrollment"></td>
-                      <td><button class="btn btn-info"> INFO </button></td>
-                      <td><button class="btn btn-success" 
-                        data-bind="text : followed()? 'Unfollow' : 'Follow'" ></button></td>
+                      <td>
+                        <button class="btn btn-info"> INFO </button>
+                        <button class="btn btn-success" 
+                        data-bind="text : followed()? 'Unfollow' : 'Follow'" ></button>
+                      </td>
                     </tr>
                   </tbody>
 
