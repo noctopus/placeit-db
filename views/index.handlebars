@@ -84,6 +84,10 @@ $(document).ready(function(){
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Follow a Class</h4>
+      </div>
       <div class="modal-body" data-bind="foreach : Object.keys(groupedClasses())">
 
         <div class="panel-group" id="accordion">
@@ -100,19 +104,18 @@ $(document).ready(function(){
 
                   <thead>
                     <tr>
-                      <td>Class</td><td>Enrollment</td><td>Info</td><td>Follow</td>
+                      <td>Class</td><td>Enrollment</td>
                     </tr>
                   </thead>
 
                   <tbody data-bind="foreach : $parent.groupedClasses()[$data]">
                     <tr>
-                      <td data-bind="text : name"></td>
-                      <td data-bind="text : enrollment() + '/' + max_enrollment"></td>
-                      <td>
-                        <button class="btn btn-info"> INFO </button>
+                      <td> <span data-bind="text : name"></span><br>    
+                      <button class="btn btn-info"> INFO </button>                    
                         <button class="btn btn-success" 
                         data-bind="text : followed()? 'Unfollow' : 'Follow'" ></button>
                       </td>
+                      <td data-bind="text : enrollment() + '/' + max_enrollment"></td>
                     </tr>
                   </tbody>
 
