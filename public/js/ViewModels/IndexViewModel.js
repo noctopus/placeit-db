@@ -6,6 +6,7 @@ function IndexViewModel(repository, element){
 		allClasses : ko.observableArray([]),
 		currentClasses : ko.observableArray([]),
 		getInfo : function(model){
+			window.open("/info");
 		},
 		enroll : function(model){
 			var id = model.id;
