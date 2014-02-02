@@ -9,17 +9,32 @@ function IndexViewModel(repository, element){
 		},
 		enroll : function(model){
 			var id = model.id;
-			self.db.Enroll(id);
+			self.db.Enroll(id, model.enrollment());
 		}
 	});
 
-	ViewModel().unfollow = function(model){
-		var id = model.id;
-		var returner = [];
-		var arr = ViewModel().currentClasses().filter(function(element){
-			return element != model.id;
-		});
-		ViewModel().currentClasses(arr);
+	ko.bindingHandlers.toggle = {
+		init : function(element, valueAccessor){
+			$(element).click(function(){
+				ViewModel().toggle(valueAccessor());
+			});
+		}
+	}
+
+	ViewModel().toggle = function(model){
+		console.log(model);
+		if(model.followed() == true){
+			var id = model.id;
+			var returner = [];
+			var arr = ViewModel().currentClasses().filter(function(element){
+				return element != model.id;
+			});
+			ViewModel().currentClasses(arr);
+		}else{
+			var arr = ViewModel().currentClasses();
+			arr.push(model.id);
+			ViewModel().currentClasses(arr);
+		}
 	};
 
 	ViewModel().viewedClasses =  ko.computed(function(){
@@ -37,7 +52,7 @@ function IndexViewModel(repository, element){
 			if(returner[element.group] == null){
 				returner[element.group] = [];
 			}
-			element.followed = ko.observable(enrolled.indexOf(element.id) >= 0);
+
 			returner[element.group].push(element);
 		});
 		return returner;
@@ -46,11 +61,19 @@ function IndexViewModel(repository, element){
 	self.initialize = function(){
 		ko.applyBindings(ViewModel, self.element);
 
-		self.db.GetEnrolledClasses(0, function(classes){
-			ViewModel().currentClasses(classes);
-		});
-
 		self.db.GetClasses(function(classes){
+			self.db.GetEnrolledClasses(0, function(currclasses){
+				ViewModel().currentClasses(currclasses);
+			});
+			var enrolled = ViewModel().currentClasses();
+			classes.forEach(function(element, index){
+				classes[index].followed = ko.computed(function(){
+					var enrolled = this();
+					return enrolled.indexOf(element.id) >= 0
+				},ViewModel().currentClasses);
+
+			});
+
 			ViewModel().allClasses(classes);
 		});
 	}

@@ -52,7 +52,7 @@ io = io.listen(server);
 io.sockets.on('connection', function (socket) {
 	var enrollments = require("./hubs/enrollments");
 	app.post("/enrollments", function(req,res){
-		io.sockets.emit("enrollment", {id : req.body.id, count : 1});
+		io.sockets.emit("enrollment", {id : req.body.id, count : parseInt(req.body.count)+1});
 		res.send({message : "Sent to everyone!"});
 	});
 
