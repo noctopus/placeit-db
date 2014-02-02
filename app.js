@@ -47,13 +47,7 @@ server.listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });
 
+var enrollments = require("./hubs/enrollments.js");
 var io = require('socket.io');
 io = io.listen(server);
-io.sockets.on('connection', function (socket) {
-	var enrollments = require("./hubs/enrollments");
-	app.post("/enrollments", function(req,res){
-		io.sockets.emit("enrollment", {id : req.body.id, count : parseInt(req.body.count)+1});
-		res.send({message : "Sent to everyone!"});
-	});
-
-});
+app.post("/enrollments", enrollments.enroll(io.sockets));

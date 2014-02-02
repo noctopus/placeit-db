@@ -9,7 +9,11 @@ function IndexViewModel(repository, element){
 		},
 		enroll : function(model){
 			var id = model.id;
-			self.db.Enroll(id, model.enrollment());
+			var confirm = window.confirm("Are you sure you want to enroll?");
+			if(confirm){
+				self.db.Enroll(id, model.enrollment());
+			}
+			
 		}
 	});
 
@@ -18,6 +22,12 @@ function IndexViewModel(repository, element){
 			$(element).click(function(){
 				ViewModel().toggle(valueAccessor());
 			});
+		}
+	}
+
+	ko.bindingHandlers.gradechart = {
+		init : function(element, valueAccessor){
+			GenerateChart(element);
 		}
 	}
 
