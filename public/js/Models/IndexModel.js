@@ -2,7 +2,7 @@ function IndexModel(ViewModel){
 	var self = this;
   self.ViewModel = ViewModel;
 
-	var socket = io.connect('http://localhost:3000');
+	var socket = io.connect(location.origin.replace(/^http/, 'ws'));
   	socket.on('enrollment', function (data) {
       console.log(data);
     	self.ViewModel.updateClass(data.id, data.count);
