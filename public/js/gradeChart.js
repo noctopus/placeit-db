@@ -18,10 +18,13 @@ function GenerateChart(element,data){
                         var init = 25;
                         var series = this.series[0];
                         setInterval(function() {
-                            if(Math.random()*10 < 5){
+                            var num = Math.random()*10;
+                            if(num < 4){
                                 inc = -1;
-                            }else{
+                            }else if(num < 7){
                                 inc = 1;
+                            }else{
+                                inc = 0;
                             }
                             var x = (new Date()).getTime(), // current time
                                 y = init += inc;
@@ -71,7 +74,7 @@ function GenerateChart(element,data){
                     for (i = -19; i <= 0; i++) {
                         data.push({
                             x: time + i * 1000,
-                            y: Math.random()
+                            y: Math.random()*50
                         });
                     }
                     return data;

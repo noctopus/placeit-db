@@ -3,12 +3,22 @@ function InfoViewModel(repository, element){
 	self.element = element;
 	self.db = new repository(self);
 	var ViewModel = ko.observable({
-		_class : ko.observable({name : "Not loaded yet"})
+		_class : ko.observable({name : "Not loaded yet"}),
+		messages : ko.observableArray([]),
+		currentMessage : ko.observable()
 	});
-	
+
 	ko.bindingHandlers.gradechart = {
 		init : function(element, valueAccessor){
 			GenerateChart(element);
+		}
+	}
+
+	ko.bindingHandlers.submitMessage = {
+		init : function(element, valueAccessor){
+			$(element).click(function(){
+				ViewModel().messages.push(valueAccessor()());
+			});
 		}
 	}
 
