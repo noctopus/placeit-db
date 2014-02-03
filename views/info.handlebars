@@ -44,6 +44,21 @@ $(document).ready(function(){
     </ol>
 
     <h3>Presented by <span data-bind="text : _class().instructor"></span></h3>
+
+<!-- Nav tabs -->
+<ul class="nav nav-tabs">
+  <li class="active"><a href="#info" data-toggle="tab">Class Info</a></li>
+  <li><a href="#enrollment" data-toggle="tab">Enrollment Stats</a></li>
+  <li><a href="#cape" data-toggle="tab">CAPE Reviews</a></li>
+  <li><a href="#feed" data-toggle="tab">Live Feed</a></li>
+</ul>
+
+  <div class="tab-content">
+  <div class="tab-pane" id ="cape">CAPES</div>
+  <div class="tab-pane" id="enrollment">ENROLLMENT</div>
+
+
+  <div class="tab-pane active" id="info">
     <span class="label label-primary">Lecture Times</span>
     <table class="table">
       <thead><tr>
@@ -71,14 +86,13 @@ $(document).ready(function(){
          <li class="list-group-item">CSE 100</li>
          <li class="list-group-item">CSE 105</li>
     </ul>
+   </div>
 
-    <button class="btn-info">View CAPE evaluations</button>
-
-  <div class="container">
-
-    <div class="row">
+  <div class="tab-pane" id="feed">
+     <div class="row">
       <div class="col-md-8" data-bind="gradechart : ''"></div>
-      <div class="col-md-4">
+      <div class="col-md-1"></div>
+      <div class="col-md-3">
         <div class="page-header row ">
           <h2>Messages</h2>
           <ul class="list-group" >
@@ -93,6 +107,12 @@ $(document).ready(function(){
           <button data-bind="submitMessage : currentMessage"class="btn btn-success">Submit</button>
         </div>
     </div>
+  </div>
+
+ </div>
+
+  <div class="container">
+   
   </div>
 
 </body>
