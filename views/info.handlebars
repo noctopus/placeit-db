@@ -89,13 +89,13 @@ $(document).ready(function(){
    </div>
 
   <div class="tab-pane" id="feed">
-     <div class="row">
-      <div class="col-md-8" data-bind="gradechart : ''"></div>
-      <div class="col-md-1"></div>
-      <div class="col-md-3">
-        <div class="page-header row ">
-          <h2>Messages</h2>
-          <ul class="list-group" >
+    <div class="row">
+      <div class="col-md-6">
+        <div data-bind="gradechart : ''"></div>
+      </div>
+      <div class="col-md-6">
+        <h2>Messages</h2>
+        <ul class="list-group" >
             <!-- ko if : messages().length == 0 -->
             <li class="list-group-item">No messages posted.</li>
             <!-- /ko -->
@@ -103,20 +103,17 @@ $(document).ready(function(){
             <li class="list-group-item" data-bind="text : $data"></li>
             <!-- /ko-->
           </ul>
-          <textarea type="text" data-bind="value : currentMessage" class="form-control" placeholder="Place message here"></textarea><br>
+            <textarea type="text" data-bind="value : currentMessage" class="form-control" placeholder="Place message here"></textarea><br>
           <button data-bind="submitMessage : currentMessage"class="btn btn-success">Submit</button>
-        </div>
+      </div>
     </div>
   </div>
 
  </div>
-
-  <div class="container">
-   
-  </div>
 
 </body>
 
 
 
 </html>
+  
