@@ -25,10 +25,6 @@
 <script src="http://code.highcharts.com/highcharts.js"></script>
 <script src="/js/gradeChart.js"></script>
 </head>
-<style>
-.classholder{
-}
-</style>
 <script>
 $(document).ready(function(){
   var ViewModel = new IndexViewModel(IndexModel, document.getElementById("container"));
@@ -116,7 +112,7 @@ $(document).ready(function(){
                     <tr>
                       <td>
                         <button data-bind="info : $data" class="btn btn-info"> INFO </button>                        
-                        <button class="btn btn-success" 
+                        <button class="btn btn-success"   
                           data-bind="toggle : $data, text : followed()? 'Unfollow' : 'Follow'" >
                         </button>
                       </td>

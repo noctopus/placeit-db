@@ -1,39 +1,81 @@
 function GenerateChart(element,data){
-	       $(element).highcharts({
+        Highcharts.setOptions({
+            global: {
+                useUTC: false
+            }
+        });
+    
+        var chart;
+        $(element).highcharts({
             chart: {
-                type: 'line',
-                width:510,
-                height : 250
+                type: 'spline',
+                animation: Highcharts.svg, // don't animate in old IE
+                marginRight: 10,
+                events: {
+                    load: function() {
+    
+                        // set up the updating of the chart each second
+                        var init = 25;
+                        var series = this.series[0];
+                        setInterval(function() {
+                            if(Math.random()*10 < 5){
+                                inc = -1;
+                            }else{
+                                inc = 1;
+                            }
+                            var x = (new Date()).getTime(), // current time
+                                y = init += inc;
+                            series.addPoint([x, y], true, true);
+                        }, 1000);
+                    }
+                }
             },
             title: {
-                text: 'Enrollment Distribution'
+                text: 'Enrollments'
             },
             xAxis: {
-                categories: ['1/22', '1/23', '1/24', '1/25', '1/26', '1/27', '1/28', '1/29', '1/30', '1/31', '2/1', '2/2']
+                type: 'datetime',
+                tickPixelInterval: 150
             },
             yAxis: {
                 title: {
-                    text: 'Enrollment Numbers'
-                }
+                    text: 'Value'
+                },
+                plotLines: [{
+                    value: 0,
+                    width: 1,
+                    color: '#808080'
+                }]
             },
             tooltip: {
-                enabled: false,
                 formatter: function() {
-                    return '<b>'+ this.series.name +'</b><br/>'+
-                        this.x +': '+ this.y +'°C';
+                        return '<b>'+ this.series.name +'</b><br/>'+
+                        Highcharts.dateFormat('%Y-%m-%d %H:%M:%S', this.x) +'<br/>'+
+                        Highcharts.numberFormat(this.y, 2);
                 }
             },
-            plotOptions: {
-                line: {
-                    dataLabels: {
-                        enabled: true
-                    },
-                    enableMouseTracking: false
-                }
+            legend: {
+                enabled: false
+            },
+            exporting: {
+                enabled: false
             },
             series: [{
-                name: 'Tokyo',
-                data: [7.0, 6.9, 9.5, 14.5, 18.4, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6]
+                name: 'Random data',
+                data: (function() {
+                    // generate an array of random data
+                    var data = [],
+                        time = (new Date()).getTime(),
+                        i;
+    
+                    for (i = -19; i <= 0; i++) {
+                        data.push({
+                            x: time + i * 1000,
+                            y: Math.random()
+                        });
+                    }
+                    return data;
+                })()
             }]
         });
 }

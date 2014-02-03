@@ -22,20 +22,72 @@
 <script src="/js/socket.io/dist/socket.io.js"></script>
 <script src="http://code.highcharts.com/highcharts.js"></script>
 <script src="/js/gradeChart.js"></script>
+<script src="/js/Models/InfoModel.js"></script>
+<script src="/js/ViewModels/InfoViewModel.js"></script>
 </head>
-<style>
-.classholder{
-}
-</style>
 <script>
-
+$(document).ready(function(){
+  var ViewModel = new InfoViewModel(InfoModel, document.getElementById("container"));
+  ViewModel.initialize();
+});
 </script>
 <body class="container" id="container">
   <div class="page-header row ">
     <h1> 
     <img width="70" height="70" src="http://after5chronicles.files.wordpress.com/2013/02/ouroboros042.gif"/>
-      Class Tracker <small> CSE 150 - Introduction to Artificial Intelligence: Search and Reasoning</small>
+      Class Tracker <small data-bind="text : _class().name"></small>
     </h1>
+  </div>
+    <ol class="breadcrumb">
+      <li data-bind="text : _class().group"></li>
+      <li class="active" data-bind="text : _class().name"></li>
+    </ol>
+
+    <h3>Presented by <span data-bind="text : _class().instructor"></span></h3>
+    <span class="label label-primary">Lecture Times</span>
+    <table class="table">
+      <thead><tr>
+        <td>Day</td> <td>Hour</td>
+      </tr></thead>
+
+      <tbody>
+        <tr><td>Monday</td><td>5:00 - 5:50</td></tr>
+        <tr><td>Wednesday</td><td>5:00 - 5:50</td></tr>
+        <tr><td>Friday</td><td>5:00 - 5:00</td></tr>
+      </tbody>
+    </table>
+    <span class="label label-primary">Discussion Times</span>
+    <table class="table">
+      <thead><tr>
+        <td>Day</td> <td>Hour</td>
+      </tr></thead>
+      <tbody>
+        <tr><td>Tuesday</td><td>9:00 - 9:50</td></tr>
+        <tr><td>Thursday</td><td>3:00 - 4:50</td></tr>
+      </tbody>
+    </table>
+    <span class="label label-primary">Prerequisites</span>
+      <ul class="list-group">
+         <li class="list-group-item">CSE 100</li>
+         <li class="list-group-item">CSE 105</li>
+    </ul>
+
+    <button class="btn-info">View CAPE evaluations</button>
+
+  <div class="container">
+
+    <div class="row">
+      <div class="col-md-8" data-bind="gradechart : ''"></div>
+      <div class="col-md-4">
+        <div class="page-header row ">
+          <h2>Messages</h2>
+          <ul class="list-group">
+            <li class="list-group-item">No messages yet.</li>
+          </ul>
+          <textarea type="text" class="form-control" placeholder="Place message here"></textarea><br>
+          <button class="btn btn-success">Submit</button>
+        </div>
+    </div>
   </div>
 
 </body>

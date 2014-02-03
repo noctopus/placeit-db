@@ -6,7 +6,7 @@ function IndexViewModel(repository, element){
 		allClasses : ko.observableArray([]),
 		currentClasses : ko.observableArray([]),
 		getInfo : function(model){
-			window.open("/info");
+			window.open("/info?id="+model.id);
 		},
 		enroll : function(model){
 			var id = model.id;
@@ -21,7 +21,7 @@ function IndexViewModel(repository, element){
 	ko.bindingHandlers.info = {
 		init : function(element, valueAccessor){
 			$(element).click(function(){
-				window.open("/info");
+				ViewModel().getInfo(valueAccessor());
 			});
 		}
 	}
