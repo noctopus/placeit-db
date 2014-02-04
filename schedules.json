@@ -1,0 +1,26 @@
+{
+
+  "0" : {
+
+    "lecture_time" : [
+      {"day" : "Monday", "time" : "5:00-5:50"}, {"day" :"Wednesday", "time" : "5:00-5:50"}, {"day" : "Friday", "time" : "5:00-5:50"}
+    ],
+
+    "discussion_time" : [{"day" : "Tuesday", "time" : "9:00-9:50"}, {"day" :"Thursday", "time" : "3:00-3:50"}],
+
+    "prereqs" : ["CSE100", "CSE 105"],
+
+    "cape_review" : [
+    ]
+  },
+
+  "1" : {
+
+    "lecture_time" : [
+    ],
+
+    "cape_review" : [
+    ]
+  },
+
+}
