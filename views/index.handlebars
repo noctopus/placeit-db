@@ -37,9 +37,15 @@ $(document).ready(function(){
     <img width="70" height="70" src="http://after5chronicles.files.wordpress.com/2013/02/ouroboros042.gif"/>
       Class Tracker <small> Now following...</small>
     </h1>
+<a type="button" class="label label-primary" data-toggle="collapse" data-target="#account">
+  Account Bar
+</a>
+
+<div id="account" class="collapse">
+
 
   {{#if loggedin}}
-     <div class="col-md-1 col-md-offset-4"></>
+  <div class="col-md-1 col-md-offset-4"> </>
   <form method="POST" action="/logout">
   <button class="btn btn-info">Log Out </button>
 </form>
@@ -61,6 +67,9 @@ $(document).ready(function(){
   {{/if}}
    </div>
   </div>
+
+
+</div>
   <div class="classholder">
     <div data-bind="if : viewedClasses().length == 0">
       <div class="alert alert-warning">You have no classes currently. Enroll now!</div>
