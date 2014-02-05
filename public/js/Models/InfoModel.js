@@ -99,5 +99,23 @@ function InfoModel(ViewModel){
       group : "Software Engineering"
   	}];
 
+var mockInfo = [{
+  id : 0,
+  lectureTimes : [{day : "Monday", start : "17:00", end : "17:50"}],
+  discussionTimes : [{day : "Monday", start : "17:00", end : "17:50"}],
+  prereqs : [{"CSE100"}]
+}];
+
+var mockMessages = [{
+  id : 0,
+  messages : [{text : "", date : null}]
+}];
+
+/*var mockCapes = [{
+  id : 0,
+  reviewStats : [
+  {}
+  ]
+}];*/
 
 }

@@ -18,7 +18,8 @@
     "express3-handlebars": "*",
     "mongodb": "*",
     "mongoose": "*",
-    "socket.io" : "*"
+    "socket.io" : "*",
+    "passport" : "*"
   },
   "engines": {
     "node": "0.10.x"

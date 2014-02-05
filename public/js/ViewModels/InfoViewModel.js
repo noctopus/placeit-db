@@ -5,6 +5,7 @@ function InfoViewModel(repository, element){
 	var ViewModel = ko.observable({
 		_class : ko.observable({name : "Not loaded yet"}),
 		messages : ko.observableArray([]),
+		schedule : ko.observable(),
 		currentMessage : ko.observable()
 	});
 
@@ -29,7 +30,6 @@ function InfoViewModel(repository, element){
 
 		self.db.GetClass(id, function(_class){
 			ViewModel()._class(_class);
-			console.log(ViewModel()._class());
 			ko.applyBindings(ViewModel, self.element);
 		});
 
