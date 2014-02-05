@@ -98,7 +98,7 @@ function InfoModel(ViewModel){
   		instructor : "Mihir Bellare",
       group : "Software Engineering"
   	}];
-
+/*
 var mockInfo = [{
   id : 0,
   lectureTimes : [{day : "Monday", start : "17:00", end : "17:50"}],
