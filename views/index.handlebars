@@ -37,15 +37,15 @@ $(document).ready(function(){
     <img width="70" height="70" src="http://after5chronicles.files.wordpress.com/2013/02/ouroboros042.gif"/>
       Class Tracker <small> Now following...</small>
     </h1>
-   <div class="col-md-4"></div>
-   <div class="col-md-1">
+
   {{#if loggedin}}
+     <div class="col-md-1 col-md-offset-4"></
   <form method="POST" action="/logout">
-  <button class="align-right btn btn-info">Log Out </button>
+  <button class="btn btn-info">Log Out </button>
 </form>
   {{/if}}
   {{#if notloggedin}}
-
+   <div class="col-md-5">
 <form class="form-inline" role="form" method="POST" action = "/login">
   <div class="form-group">
     <label class="sr-only" for="exampleInputEmail2">PID</label>
