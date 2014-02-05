@@ -38,17 +38,25 @@ $(document).ready(function(){
       Class Tracker <small> Now following...</small>
     </h1>
    <div class="col-md-5">
-<form class="form-inline" role="form">
+  {{#if loggedin}}
+  <form method="POST" action="/logout">
+  <button class="btn btn-info">Log Out </button>
+</form>
+  {{/if}}
+  {{#if notloggedin}}
+
+<form class="form-inline" role="form" method="POST" action = "/login">
   <div class="form-group">
     <label class="sr-only" for="exampleInputEmail2">PID</label>
-    <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Enter PID">
+    <input type="text" name="pid" class="form-control" id="exampleInputEmail2" placeholder="Enter PID">
   </div>
   <div class="form-group">
     <label class="sr-only" for="exampleInputPassword2">password</label>
-    <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Password">
+    <input type="password" name="password" class="form-control" id="exampleInputPassword2" placeholder="Password">
   </div>
   <button type="submit" class="btn btn-default">Sign in</button>
 </form>
+  {{/if}}
    </div>
   </div>
   <div class="classholder">

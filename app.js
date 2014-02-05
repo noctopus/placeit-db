@@ -11,9 +11,8 @@ var passport = require("passport")
 var config = require("./config/config.js")
 var mongoose = require("mongoose")
 var db = mongoose.connect(config.db);
+var fs = require("fs");
 
-var index = require('./routes/index');
-var info = require("./routes/info");
 
 // Example route
 // var user = require('./routes/user');
@@ -40,14 +39,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
+//models
+require("./models/users.js");
 
-// Add routes here
-app.get('/', index.view);
-app.get("/info", info.viewInfo);
-
-app.get("/signup", function(req,res){
-	res.render("signup");
-});
+// Bootstrap routes
+require('./config/routes')(app, passport);
 
 var server = http.createServer(app);
 server.listen(app.get('port'), function(){

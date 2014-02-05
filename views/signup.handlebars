@@ -38,24 +38,24 @@
                 <div class="panel-body">
                     <h5 class="text-center">
                         Info</h5>
-                    <form class="form form-signup" role="form">
+                    <form class="form form-signup" method="POST" action="/signup" role="form">
                     <div class="form-group">
                         <div class="input-group">
                             <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
-                            <input type="text" class="form-control" placeholder="PID" />
+                            <input type="text" name="pid" class="form-control" placeholder="PID" />
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="input-group">
                             <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
-                            <input type="password" class="form-control" placeholder="Password" />
+                            <input type="password" name="password" class="form-control" placeholder="Password" />
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="input-group">
                             <span class="input-group-addon"><span class="glyphicon glyphicon-pencil"></span>
                             </span>
-                            <select placeholder="Major" class="form-control">
+                            <select placeholder="Major" name="major" class="form-control">
                                <option value="" selected disabled>Major</option>
                               <option value="CompSci">Computer Science</option>
                               <option value="CogSci">Cognitive Science</option>
@@ -67,7 +67,7 @@
                         <div class="input-group">
                             <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span>
                             </span>
-                            <select placeholder="Major" class="form-control">
+                            <select placeholder="Major" name="year" class="form-control">
                                <option value="" selected disabled>Year</option>
                               <option value="Freshmen">Freshmen</option>
                               <option value="Sophomore">Sophomore</option>
@@ -78,8 +78,8 @@
                         </div>
                     </div>
                 </div>
-                <a href="http://www.jquery2dotnet.com" class="btn btn-sm btn-primary btn-block" role="button">
-                    SUBMIT</a> </form>
+                <button type="submit"class="btn btn-sm btn-primary btn-block" role="button">
+                    SUBMIT</button> </form>
             </div>
         </div>
     </div>

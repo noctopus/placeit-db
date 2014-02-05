@@ -4,38 +4,14 @@
  */
 
 exports.view = function(req, res){
-  res.render('index', {
-  	projects : [
-  	{
-  		name : 'Waiting in Line',
-  		image : 'lorempixel.people.1.jpeg',
-  		id : 'project1'
-  	},
-  	{
-  		name : 'Needfinding',
-  		image : 'lorempixel.city.1.jpeg',
-  		id : 'project2'
-  	},
-  	{
-  		name : 'Prototyping',
-  		image : 'lorempixel.technics.1.jpeg',
-  		id : 'project3'
-  	},
-  	{
-  		name : 'Heuristic Evaluation',
-  		image : 'lorempixel.abstract.1.jpeg',
-  		id : 'project4'
-  	},
- 	{
-  		name : 'Visualization',
-  		image : 'lorempixel.technics.2.jpeg',
-  		id : 'project5'
-  	},
- 	{
-  		name : 'Social Design',
-  		image : 'lorempixel.city.2.jpeg',
-  		id : 'project6'
-  	}
-  	]
-  });
+  if(req.session.user != undefined){
+    res.render('index', {
+      user : req.session.user,
+      loggedin : true
+    });
+  }else{
+    res.render("index",{
+      notloggedin : true
+    });
+  }
 };
