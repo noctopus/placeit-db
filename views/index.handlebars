@@ -85,39 +85,16 @@ $(document).ready(function(){
       </div>
 
     </div>
-
-   <button class="btn btn-info"  data-toggle="modal" data-target="#myModal">Follow a class</button>
-   <button class="btn btn-info" data-toggle="collapse" data-target="#account">
-  Account Bar
-</button>
-
-<div id="account" class="collapse">
-
-
+<form method="POST" action="/logout">
+   <a class="btn btn-info"  data-toggle="modal" data-target="#myModal">Follow a class</a>
+   {{#if notloggedin}}
+  <button class="btn btn-info"  data-toggle="modal" data-target="#login">Login</button>
+  {{/if}}
   {{#if loggedin}}
-  <div class="col-md-1 col-md-offset-4"> </>
-  <form method="POST" action="/logout">
+  
   <button class="btn btn-info">Log Out </button>
 </form>
   {{/if}}
-  {{#if notloggedin}}
-   <div class="col-md-5">
-<form class="form-inline" role="form" method="POST" action = "/login">
-  <div class="form-group">
-    <label class="sr-only" for="exampleInputEmail2">PID</label>
-    <input type="text" name="pid" class="form-control" id="exampleInputEmail2" placeholder="Enter PID">
-  </div>
-  <div class="form-group">
-    <label class="sr-only" for="exampleInputPassword2">password</label>
-    <input type="password" name="password" class="form-control" id="exampleInputPassword2" placeholder="Password">
-  </div>
-  <button type="submit" class="btn btn-default">Sign in</button>
-</form>
-<a href="/signup" target="_blank">Sign up</a>
-  {{/if}}
-   </div>
-  </div>
- </div>
 
 <!-- MODAL -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -175,6 +152,59 @@ $(document).ready(function(){
   </div>
 </div>
 <!-- MODAL -->
+
+<!-- MODAL -->
+<div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Log In</h4>
+      </div>
+    <!--  <div class="modal-body">
+        <div style="width:100%; height:100%; "data-bind="gradechart : ''"></div>
+      </div>-->
+      <div class="modal-body">
+
+
+
+<div id="account" >
+
+<form class="form-inline" role="form" method="POST" action = "/login">
+  <div class="form-group">
+    <label class="sr-only" for="exampleInputEmail2">PID</label>
+    <input type="text" name="pid" class="form-control" id="exampleInputEmail2" placeholder="Enter PID">
+  </div>
+  <div class="form-group">
+    <label class="sr-only" for="exampleInputPassword2">password</label>
+    <input type="password" name="password" class="form-control" id="exampleInputPassword2" placeholder="Password">
+  </div>
+  <button type="submit" class="btn btn-default">Sign in</button>
+</form>
+<a href="/signup" target="_blank">Sign up</a>
+  </div>
+ </div>
+
+
+
+
+
+
+
+
+
+
+
+    
+    </div>
+  </div>
+</div>
+<!-- MODAL -->
+
+
+
+
+
 </body>
 
 
