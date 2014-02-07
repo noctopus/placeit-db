@@ -85,13 +85,13 @@ $(document).ready(function(){
       </div>
 
     </div>
-<form method="POST" action="/logout">
-   <a class="btn btn-info"  data-toggle="modal" data-target="#myModal">Follow a class</a>
+
+   <button class="btn btn-info"  data-toggle="modal" data-target="#myModal">Follow a class</button>
    {{#if notloggedin}}
   <button class="btn btn-info"  data-toggle="modal" data-target="#login">Login</button>
   {{/if}}
   {{#if loggedin}}
-  
+  <form method="POST" action="/logout">
   <button class="btn btn-info">Log Out </button>
 </form>
   {{/if}}
