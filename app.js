@@ -8,10 +8,12 @@ var http = require('http');
 var path = require('path');
 var handlebars = require('express3-handlebars')
 var passport = require("passport")
-var config = require("./config/config.js")
+var config = require("./config/config.js")		
 var mongoose = require("mongoose")
 var db = mongoose.connect(config.db);
 var fs = require("fs");
+var classes = []; 					// temporary
+
 
 
 // Example route
@@ -53,4 +55,26 @@ server.listen(app.get('port'), function(){
 var enrollments = require("./hubs/enrollments.js");
 var io = require('socket.io');
 io = io.listen(server);
-app.post("/enrollments", enrollments.enroll(io.sockets));
+
+fs.readFile("./classes.json", function(err, data){
+	enrollments.classes = JSON.parse(data);
+	app.post("/enrollments/add", enrollments.enroll(io.sockets));
+	app.post("/enrollments/drop", enrollments.enroll(io.sockets));
+});
+
+app.get("/classes", function(req,res){
+	var classes = enrollments.classes;
+	var returner = JSON.parse(JSON.stringify(classes));	console.log(req.session.user);
+	for(var i = 0; i < classes.length; i++){
+		if(req.session.user != null && returner[i].enrollment.indexOf(req.session.user.pid) >= 0){
+			returner[i].enrolled = true;
+		}else{
+			returner[i].enrolled = false;
+		}
+		var count = returner[i].enrollment.length;
+		returner[i].enrollment = count;
+
+	}
+		res.end(JSON.stringify(returner, null, '\t'));
+});
+

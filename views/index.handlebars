@@ -52,10 +52,12 @@ $(document).ready(function(){
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
         {{#if notloggedin}}
-        <li><button class="btn btn-default" style="margin-top:5px;" data-toggle="modal" data-target="#login">Login</button></li>
+        <li><button class="btn btn-default" style="margin-top:5px;" data-toggle="modal" data-target="#login">Login</button>
+           <button class="btn btn-default"  style="margin-top:5px;" href="/signup" >Sign up</button>
+        </li>
         {{/if}}
         {{#if loggedin}}
-          <button class="btn btn-default"  style="margin-top:5px;" data-bind="click: logout">Log Out </button>
+          <button class="btn btn-default" style="margin-top:5px;" data-bind="click: logout">Log Out </button>
         {{/if}}
       </ul>
     </div><!-- /.navbar-collapse -->
@@ -183,7 +185,7 @@ $(document).ready(function(){
     <label class="sr-only" for="exampleInputPassword2">password</label>
     <input type="password" name="password" class="form-control" id="exampleInputPassword2" placeholder="Password">
   </div>
-  <button type="submit" class="btn btn-default">Sign in</button> <a class="btn btn-default" href="/signup" target="_blank">Sign up</a>
+  <button type="submit" class="btn btn-default">Sign in</button>
 </form>
 
   </div>
