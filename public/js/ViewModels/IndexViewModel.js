@@ -5,6 +5,11 @@ function IndexViewModel(repository, element){
 	var ViewModel = ko.observable({
 		allClasses : ko.observableArray([]),
 		currentClasses : ko.observableArray([]),
+		logout : function(){
+			$.post("/logout", function(){
+				location.href="/";
+			});				
+		},
 		getInfo : function(model){
 			window.open("/info?id="+model.id);
 		},
