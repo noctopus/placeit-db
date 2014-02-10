@@ -3,9 +3,6 @@ function IndexModel(ViewModel){
   self.ViewModel = ViewModel;
  // var socket = io.connect("http://localhost:8000");
  var URI = location.origin.replace(/^http/, 'ws');
- if(URI.indexOf("socket")>= 0){
-    URI = URI.slice(0, URI.indexOf("socket"))
- }
 	var socket = io.connect(URI);
   	socket.on('enrollment', function (data) {
       console.log(data);
