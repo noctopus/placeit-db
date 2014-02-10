@@ -66,6 +66,10 @@ $(document).ready(function(){
       <div class="alert alert-warning">You aren't following any classes yet. Follow one now!</div>
     </div>
 
+    {{#if notloggedin}}
+     <div id ="loginpls" class="alert alert-warning">To enroll in a class, please log in or sign up.
+     </div>
+    {{/if}}
     <div data-bind="foreach: viewedClasses()">
 
       <div class="alert alert-success">
@@ -88,7 +92,7 @@ $(document).ready(function(){
           <div class="col-md-3">
             <button data-bind="click : $parent.getInfo" class="btn btn-info">Info</button>
             <button data-bind="click : $parent.toggle" class="btn btn btn-primary">Unfollow</button>
-            <button data-bind="click : $parent.toggleClass, css: {ifEnrolled: !enrolled(), notEnrolled: enrolled() }" class="btn btn-success">
+            <button data-bind="visible : {{#if notloggedin}} false {{/if}} {{#if loggedin}} true {{/if}}, click : $parent.toggleClass, css: {ifEnrolled: !enrolled(), notEnrolled: enrolled() }" class="btn btn-success">
                 <span data-bind="visible: !enrolled()">Enroll</span>
                 <span data-bind="visible: enrolled()">Drop</span>
               </button>

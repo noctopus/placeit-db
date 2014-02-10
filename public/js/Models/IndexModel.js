@@ -26,12 +26,16 @@ function IndexModel(ViewModel){
   	}
 
   	self.Enroll = function(id, enrollment){
-  		$.post("/enrollments/add", {id : id, count : enrollment});
+  		$.post("/enrollments/add", {id : id, count : enrollment}, function(msg){
+
+      });
   	}
 
 
     self.Drop = function(id, enrollment){
-      $.post("/enrollments/drop", {id : id, count : enrollment});
+      $.post("/enrollments/drop", {id : id, count : enrollment}, function(msg){
+        
+      });
     }
 
 
