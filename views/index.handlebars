@@ -91,7 +91,10 @@ $(document).ready(function(){
           <div class="col-md-3">
             <button data-bind="click : $parent.getInfo" class="btn btn-info">Info</button>
             <button data-bind="click : $parent.toggle" class="btn btn btn-primary">Unfollow</button>
-            <button data-bind="click : $parent.enroll" class="btn btn-success">Enroll</button>
+            <button data-bind="click : $parent.toggleClass, css: {ifEnrolled: !enrolled(), notEnrolled: enrolled() }" class="btn btn-success">
+                <span data-bind="visible: !enrolled()">Enroll</span>
+                <span data-bind="visible: enrolled()">Drop</span>
+              </button>
           </div>
 
         </div>
@@ -185,7 +188,8 @@ $(document).ready(function(){
     <label class="sr-only" for="exampleInputPassword2">password</label>
     <input type="password" name="password" class="form-control" id="exampleInputPassword2" placeholder="Password">
   </div>
-  <button type="submit" class="btn btn-default">Sign in</button>
+
+  <button type="submit" class="btn btn-default">Log in</button>
 </form>
 
   </div>

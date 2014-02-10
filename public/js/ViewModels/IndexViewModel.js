@@ -13,15 +13,33 @@ function IndexViewModel(repository, element){
 		getInfo : function(model){
 			window.open("/info?id="+model.id);
 		},
+
 		enroll : function(model){
 			var id = model.id;
 			var confirm = window.confirm("Are you sure you want to enroll?");
 			if(confirm){
+				model.enrolled(true);
 				self.db.Enroll(id, model.enrollment());
 			}
-			
+		},
+		drop : function(model){
+			var id = model.id;
+			var confirm = window.confirm("Are you sure you want to drop?");
+			if(confirm){
+				model.enrolled(false);
+				self.db.Drop(id, model.enrollment());
+			}
 		}
 	});
+
+	ViewModel().toggleClass = function(model){
+		if (model.enrolled()) {
+			ViewModel().drop(model);
+		}
+		else {
+			ViewModel().enroll(model);
+		}
+	}
 
 	ko.bindingHandlers.info = {
 		init : function(element, valueAccessor){
