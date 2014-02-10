@@ -19,8 +19,7 @@ function IndexViewModel(repository, element){
 			var confirm = window.confirm("Are you sure you want to enroll?");
 			if(confirm){
 				model.enrolled(true);
-				//self.db.Enroll(id, model.enrollment());
-				//$(this).text("Drop");
+				self.db.Enroll(id, model.enrollment());
 			}
 		},
 		drop : function(model){
@@ -28,7 +27,7 @@ function IndexViewModel(repository, element){
 			var confirm = window.confirm("Are you sure you want to drop?");
 			if(confirm){
 				model.enrolled(false);
-				//self.db.Drop(id, model.enrollment());
+				self.db.Drop(id, model.enrollment());
 			}
 		}
 	});
