@@ -25,12 +25,12 @@ exports.drop = function(socket){
   		var _class = null;
 
   		for(var i = 0; i < exports.classes.length; i++){
-  			if(exports.classes[i].id == parseInt(req.body.id)){
+  			if(exports.classes[i].id == req.body.id){
   					_class = i;
   			}
   		}
-
-   	if(req.session.user != null && _class != null && exports.classes[_class].indexOf(req.session.user.pid)  >= 0){
+  		console.log(exports.classes[_class].enrollment, req.session.user);
+   	if(req.session.user != null && _class != null && exports.classes[_class].enrollment.indexOf(req.session.user.pid)  >= 0){
    		exports.classes[_class].enrollment.splice(exports.classes[_class].enrollment.indexOf(req.session.user.pid),1);
 		socket.emit("enrollment", {id : req.body.id, count : exports.classes[_class].enrollment.length});
    		res.send({message : "Sent to everyone!"});
