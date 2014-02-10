@@ -1,11 +1,20 @@
-function GenerateChart(element,data){
+function AddPoint(series, arr){
+    series.addPoint(arr, true,true);
+}
+
+function GenerateChart(element, _class){
+
         Highcharts.setOptions({
             global: {
                 useUTC: false
             }
         });
     
+ var URI = location.origin.replace(/^http/, 'ws');
+ var socket = io.connect(URI);
+
         var chart;
+        var series = null;
         $(element).highcharts({
             chart: {
                 type: 'spline',
@@ -16,20 +25,17 @@ function GenerateChart(element,data){
     
                         // set up the updating of the chart each second
                         var init = 25;
-                        var series = this.series[0];
-                        setInterval(function() {
-                            var num = Math.random()*10;
-                            if(num < 4){
-                                inc = -1;
-                            }else if(num < 7){
-                                inc = 1;
-                            }else{
-                                inc = 0;
+                        series = this.series[0];
+                        console.log(series);
+ 
+                        socket.on('enrollment', function (data) {
+                            console.log(data.id, _class.id);
+                            if(parseInt(data.id) == _class.id){
+                                var x = (new Date()).getTime(), // current time
+                                    y = data.count;
+                                AddPoint(series, [x,y]);
                             }
-                            var x = (new Date()).getTime(), // current time
-                                y = init += inc;
-                            series.addPoint([x, y], true, true);
-                        }, 1000);
+                        });
                     }
                 }
             },
@@ -74,7 +80,7 @@ function GenerateChart(element,data){
                     for (i = -19; i <= 0; i++) {
                         data.push({
                             x: time + i * 1000,
-                            y: Math.random()*50
+                            y: _class.enrollment.length
                         });
                     }
                     return data;

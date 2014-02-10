@@ -1,3 +1,10 @@
+function getID(){
+		var url = document.URL.split("?");
+		var urlParam = url[1];
+		var id = parseInt(urlParam.split("=")[1]);
+		return id;
+}
+
 function InfoViewModel(repository, element){
 	var self = this;
 	self.element = element;
@@ -9,11 +16,7 @@ function InfoViewModel(repository, element){
 		currentMessage : ko.observable()
 	});
 
-	ko.bindingHandlers.gradechart = {
-		init : function(element, valueAccessor){
-			GenerateChart(element);
-		}
-	}
+
 
 	ko.bindingHandlers.submitMessage = {
 		init : function(element, valueAccessor){
@@ -24,12 +27,18 @@ function InfoViewModel(repository, element){
 	}
 
 	self.initialize = function(){
-		var url = document.URL.split("?");
-		var urlParam = url[1];
-		var id = parseInt(urlParam.split("=")[1]);
+		var id = getID();
 
 		self.db.GetClass(id, function(_class){
 			ViewModel()._class(_class);
+
+		ko.bindingHandlers.gradechart = {
+			init : function(element, valueAccessor){
+				GenerateChart(element, _class);
+			}
+		}
+
+
 			ko.applyBindings(ViewModel, self.element);
 		});
 

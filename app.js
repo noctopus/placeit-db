@@ -78,3 +78,12 @@ app.get("/classes", function(req,res){
 		res.end(JSON.stringify(returner, null, '\t'));
 });
 
+app.get("/classes/:id", function(req,res){
+
+	res.end(
+		JSON.stringify(
+			enrollments.classes.filter(function(e){return e.id == parseInt(req.params.id)})[0]
+			)
+		);
+})
+
