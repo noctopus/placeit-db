@@ -9,6 +9,9 @@ function IndexModel(ViewModel){
   });
 
   	self.GetClasses = function(callback){
+      for (var i = 0; i < mockDB.length; i++) {
+        mockDB[i].enrolled = ko.observable(false);
+      }
   		callback(mockDB);
   	}
 
@@ -19,7 +22,6 @@ function IndexModel(ViewModel){
   	self.Enroll = function(id, enrollment){
   		$.post("/enrollments", {id : id, count : enrollment});
   	}
-
 
   	var mockDB = [
   	{
