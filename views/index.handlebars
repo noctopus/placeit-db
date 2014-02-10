@@ -51,14 +51,13 @@ $(document).ready(function(){
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
-        {{#if notloggedin}}
+       
         <li><button class="btn btn-default" style="margin-top:5px;" data-toggle="modal" data-target="#login">Login</button>
            <button class="btn btn-default"  style="margin-top:5px;" onclick="window.open('/signup');" >Sign up</button>
         </li>
-        {{/if}}
-        {{#if loggedin}}
+
           <button class="btn btn-default" style="margin-top:5px;" data-bind="click: logout">Log Out </button>
-        {{/if}}
+
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
