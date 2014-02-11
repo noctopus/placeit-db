@@ -41,7 +41,7 @@ function InfoViewModel(repository, element){
 		}
 
 	ko.bindingHandlers.barChartYear = {
-		init : function(element, valueAccessor){
+		update : function(element, valueAccessor){
 			var data = valueAccessor()();
 
 			var total = {
@@ -74,7 +74,7 @@ function InfoViewModel(repository, element){
 
 
 	ko.bindingHandlers.barChartMajor = {
-		init : function(element, valueAccessor){
+		update : function(element, valueAccessor){
 			var data = valueAccessor()();
 			var total = {
 				CompSci : 0,
