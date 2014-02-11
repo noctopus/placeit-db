@@ -11,7 +11,7 @@ exports.enroll = function(socket){
    	if(req.session.user != null && _class != null && exports.classes[_class].enrollment.indexOf(req.session.user.pid) < 0){
    		exports.classes[_class].enrollment.push(req.session.user.pid);
    	    socket.emit("enrollment", {id : req.body.id, count : exports.classes[_class].enrollment.length});
-   		res.send({message : "Sent to everyone!", code : 200});
+   		res.send({message : "Sent to everyone!",  user : req.session.user, code : 200});
    	}else{
    		res.send({message : "Unable to do action", user : req.session.user, class : _class, code : 500})
    	}
@@ -33,7 +33,7 @@ exports.drop = function(socket){
    	if(req.session.user != null && _class != null && exports.classes[_class].enrollment.indexOf(req.session.user.pid)  >= 0){
    		exports.classes[_class].enrollment.splice(exports.classes[_class].enrollment.indexOf(req.session.user.pid),1);
 		socket.emit("enrollment", {id : req.body.id, count : exports.classes[_class].enrollment.length});
-   		res.send({message : "Sent to everyone!", code : 200});
+   		res.send({message : "Sent to everyone!",  user : req.session.user, code : 200});
    	}else{
    		res.send({message :"Unable to do action", code : 500});
    	}

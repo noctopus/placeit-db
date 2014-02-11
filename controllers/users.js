@@ -26,6 +26,12 @@ exports.logout = function(req, res) {
     });
 };
 
+exports.getUsers = function(callback){
+    User.find({}, function(err,users){
+        callback(users);
+    });
+}
+
 /**
  * Session
  */

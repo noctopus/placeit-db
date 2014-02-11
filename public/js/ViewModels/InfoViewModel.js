@@ -19,12 +19,14 @@ function InfoViewModel(repository, element){
 
 
 	ko.bindingHandlers.submitMessage = {
-		init : function(element, valueAccessor){
+		update : function(element, valueAccessor){
 			$(element).click(function(){
 				ViewModel().messages.push(valueAccessor()());
 			});
 		}
 	}
+
+
 
 	self.initialize = function(){
 		var id = getID();
@@ -38,6 +40,60 @@ function InfoViewModel(repository, element){
 			}
 		}
 
+	ko.bindingHandlers.barChartYear = {
+		init : function(element, valueAccessor){
+			var data = valueAccessor()();
+
+			var total = {
+				Freshmen  : 0,
+				Sophomore : 0,
+				Junir : 0,
+				Senior : 0,
+				Senior_plus : 0
+			}
+
+			var x_Axis = Object.keys(total);
+
+			for(var i = 0; i < data.length; i++){
+				total[data[i].year] ++;
+
+				if(data[i].year == "Senior+"){
+					total.Senior_plus++;
+				}
+			}
+			var returner = [];
+
+			for(var i = 0; i < x_Axis.length; i++){
+				returner.push(total[x_Axis[i]]);
+			}
+			x_Axis = ["Freshmen", "Sophomore", "Junior",'Senior', "Senior+"]
+
+			generateBarChart(element, returner, "Year", x_Axis);
+		}
+	}
+
+
+	ko.bindingHandlers.barChartMajor = {
+		init : function(element, valueAccessor){
+			var data = valueAccessor()();
+			var total = {
+				CompSci : 0,
+				CogSci : 0,
+				Other : 0
+			}
+			
+			var x_Axis = Object.keys(total);
+
+			for(var i = 0; i < data.length; i++){
+				total[data[i].major] ++;
+			}
+			var returner = [];
+			for(var i = 0; i < x_Axis.length; i++){
+				returner.push(total[x_Axis[i]]);
+			}
+			generateBarChart(element, returner, "Major", x_Axis);
+		}
+	}
 
 			ko.applyBindings(ViewModel, self.element);
 		});

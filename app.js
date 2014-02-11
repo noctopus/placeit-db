@@ -79,11 +79,24 @@ app.get("/classes", function(req,res){
 });
 
 app.get("/classes/:id", function(req,res){
+	var _class = enrollments.classes.filter(function(e){return e.id == parseInt(req.params.id)})[0];
+	_class = JSON.parse(JSON.stringify(_class));
+	var users = require("./controllers/users.js").getUsers(function(users){
+		var classes = [];
+		console.log(_class);
+		for(var i = 0; i < users.length; i++){
+			if(_class.enrollment.indexOf(users[i].pid) >= 0){
+				users[i].password = "";
+				classes.push(users[i]);
+			}
+		}
+		_class.enrollment = classes;
+		res.end(
+			JSON.stringify(
+				_class
+				)
+			);
+	});
 
-	res.end(
-		JSON.stringify(
-			enrollments.classes.filter(function(e){return e.id == parseInt(req.params.id)})[0]
-			)
-		);
 })
 

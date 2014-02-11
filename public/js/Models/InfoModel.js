@@ -4,8 +4,9 @@ function InfoModel(ViewModel){
 
 	self.GetClass = function(id, callback){
       $.get("/classes/"+id, function(_class){
-        console.log(JSON.parse(_class));
-        callback(JSON.parse(_class));
+        _class = JSON.parse(_class);
+        _class.enrollment = ko.observableArray(_class.enrollment);
+        callback(_class)
       });
     }
 

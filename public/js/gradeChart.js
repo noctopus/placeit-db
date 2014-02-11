@@ -76,11 +76,14 @@ function GenerateChart(element, _class){
                     var data = [],
                         time = (new Date()).getTime(),
                         i;
-    
-                    for (i = -19; i <= 0; i++) {
+                    data.push({
+                        x: time -10 * 1000,
+                        y: 0
+                    });
+                    for (i = -9; i <= 0; i++) {
                         data.push({
                             x: time + i * 1000,
-                            y: _class.enrollment.length
+                            y: _class.enrollment().length
                         });
                     }
                     return data;
