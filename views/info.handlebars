@@ -111,20 +111,7 @@ $(document).ready(function(){
       <div class="col-md-6">
         <div data-bind="gradechart : ''"></div>
       </div>
-      <div class="col-md-6">
-        <h2>Messages</h2>
-        <ul class="list-group" >
-            <!-- ko if : messages().length == 0 -->
-            <li class="list-group-item">No messages posted.</li>
-            <!-- /ko -->
-            <!-- ko foreach : messages-->
-            <li class="list-group-item" data-bind="text : $data"></li>
-            <!-- /ko-->
-          </ul>
-            <textarea type="text" data-bind="value : currentMessage" class="form-control" placeholder="Place message here"></textarea><br>
-          <button data-bind="submitMessage : currentMessage"class="btn btn-success">Submit</button>
-      </div>
-    </div>
+
   </div>
 
  </div>
