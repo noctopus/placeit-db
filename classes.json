@@ -49,7 +49,7 @@
   	},
   	{
   		"id" : 6,
-  		"name" : "CSE112 - Advanced Software Engineering",
+  		"name" : "CSE 112 - Advanced Software Engineering",
   		"enrollment" : [],
   		"max_enrollment" : 50,
   		"instructor" : "Bill Griswald",
@@ -79,11 +79,131 @@
   		"instructor" : "That guy named Yannis",
       "group" : "Software Engineering"
   	},
+  {
+      "id" : 10,
+      "name" : "CSE 107 - Introduction to Modern Cryptography",
+      "enrollment" : [],
+      "max_enrollment" : 50,
+      "instructor" : "Mihir Bellare",
+      "group" : "Software Engineering"
+    },
 	{
-  		"id" : 10,
-  		"name" : "CSE107 - Introduction to Modern Cryptography",
+  		"id" : 11,
+  		"name" : "CSE 100 - Advanced Data Structures",
   		"enrollment" : [],
   		"max_enrollment" : 50,
-  		"instructor" : "Mihir Bellare",
+  		"instructor" : "Scott Baden",
       "group" : "Software Engineering"
-  	}]
+  	},
+  {
+      "id" : 12,
+      "name" : "CSE 105 - Intro/Theory of Computation",
+      "enrollment" : [],
+      "max_enrollment" : 50,
+      "instructor" : "Jeanne Ferrante",
+      "group" : "Software Engineering"
+    },
+  {
+      "id" : 13,
+      "name" : "CSE 110 - Software Engineering",
+      "enrollment" : [],
+      "max_enrollment" : 50,
+      "instructor" : "Gary Gillespie",
+      "group" : "Software Engineering"
+    },
+  {
+      "id" : 14,
+      "name" : "CSE 120 - Principles of Computer Operating Systems",
+      "enrollment" : [],
+      "max_enrollment" : 50,
+      "instructor" : "Yuan-Yuan Zhao",
+      "group" : "Software Engineering"
+    },
+  {
+      "id" : 15,
+      "name" : "CSE 127 - Introduction to Computer Security",
+      "enrollment" : [],
+      "max_enrollment" : 50,
+      "instructor" : "Schacham Hovav",
+      "group" : "Software Engineering"
+    },
+  {
+      "id" : 16,
+      "name" : "CSE 130 - Programming Languages: Principles and Paradigms",
+      "enrollment" : [],
+      "max_enrollment" : 50,
+      "instructor" : "Ranjit Jhala",
+      "group" : "Software Engineering"
+    },
+  {
+      "id" : 17,
+      "name" : "CSE 131 - Compiler Construction",
+      "enrollment" : [],
+      "max_enrollment" : 50,
+      "instructor" : "Rick Ord",
+      "group" : "Software Engineering"
+    },
+  {
+      "id" : 18,
+      "name" : "CSE 140 - Components and Design Techniques for Digital Systems",
+      "enrollment" : [],
+      "max_enrollment" : 50,
+      "instructor" : "Kuan Cheng",
+      "group" : "Software Engineering"
+    },
+  {
+      "id" : 19,
+      "name" : "CSE 140L - Digital Systems Laboratory",
+      "enrollment" : [],
+      "max_enrollment" : 50,
+      "instructor" : "Choon Kim",
+      "group" : "Software Engineering"
+    },
+  {
+      "id" : 20,
+      "name" : "CSE 141 - Introduction to Computer Architecture",
+      "enrollment" : [],
+      "max_enrollment" : 50,
+      "instructor" : "James Swanson",
+      "group" : "Software Engineering"
+    },
+  {
+      "id" : 21,
+      "name" : "CSE 145 - Embedded System Design Project",
+      "enrollment" : [],
+      "max_enrollment" : 50,
+      "instructor" : "Charles Kastner",
+      "group" : "Software Engineering"
+    },
+  {
+      "id" : 22,
+      "name" : "CSE 148 - Advanced Processor Architecture Design Project",
+      "enrollment" : [],
+      "max_enrollment" : 50,
+      "instructor" : "Michael Tullsen",
+      "group" : "Software Engineering"
+    },
+  {
+      "id" : 23,
+      "name" : "CSE 190 - Topics in Computer Science and Engineering - Intro to Biometrics",
+      "enrollment" : [],
+      "max_enrollment" : 50,
+      "instructor" : "David Kreigman",
+      "group" : "Software Engineering"
+    },
+  {
+      "id" : 24,
+      "name" : "CSE 190 - Topics in Computer Science and Engineering - Successful Entrepreneurship",
+      "enrollment" : [],
+      "max_enrollment" : 50,
+      "instructor" : "Staff",
+      "group" : "Software Engineering"
+    },
+  {
+      "id" : 25,
+      "name" : "CSE 190 - Topics in Computer Science and Engineering - Mobile Programming",
+      "enrollment" : [],
+      "max_enrollment" : 50,
+      "instructor" : "Ganapathy Chockalingam",
+      "group" : "Software Engineering"
+    }]
