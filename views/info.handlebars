@@ -82,21 +82,17 @@ $(document).ready(function(){
       <thead><tr>
         <td>Day</td> <td>Hour</td>
       </tr></thead>
-
-      <tbody>
-        <tr><td>Monday</td><td>5:00 - 5:50</td></tr>
-        <tr><td>Wednesday</td><td>5:00 - 5:50</td></tr>
-        <tr><td>Friday</td><td>5:00 - 5:00</td></tr>
+      <tbody data-bind="foreach:_class().info.lecture_time">
+        <tr><td data-bind="text : day"></td><td data-bind="text : time"></td></tr>
       </tbody>
     </table>
     <span class="label label-primary">Discussion Times</span>
-    <table class="table">
+    <table class="table" data-bind="if : _class().info.discussion_time">
       <thead><tr>
         <td>Day</td> <td>Hour</td>
       </tr></thead>
-      <tbody>
-        <tr><td>Tuesday</td><td>9:00 - 9:50</td></tr>
-        <tr><td>Thursday</td><td>3:00 - 4:50</td></tr>
+      <tbody data-bind="foreach:_class().info.discussion_time">
+        <tr><td data-bind="text : day"></td><td data-bind="text : time"></td></tr>
       </tbody>
     </table>
     <span class="label label-primary">Prerequisites</span>

@@ -14,6 +14,7 @@ var mongoose = require("mongoose")
 var db = mongoose.connect(config.db);
 var fs = require("fs");
 var classes = []; 					// temporary
+var schedules = null;
 
 
 
@@ -63,6 +64,10 @@ fs.readFile("./classes.json", function(err, data){
 	app.post("/enrollments/drop", enrollments.drop(io.sockets));
 });
 
+fs.readFile("./schedules.json", function(err, data){
+	schedules = JSON.parse(data);
+});
+
 app.get("/classes", function(req,res){
 	var classes = enrollments.classes;
 	var returner = JSON.parse(JSON.stringify(classes));	console.log(req.session.user);
@@ -91,7 +96,10 @@ app.get("/classes/:id", function(req,res){
 				classes.push(users[i]);
 			}
 		}
+
+		_class.info = schedules[_class.id];
 		_class.enrollment = classes;
+		console.log(_class);
 		res.end(
 			JSON.stringify(
 				_class
