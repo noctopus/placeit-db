@@ -3,12 +3,12 @@
   "0" : {
 
     "lecture_time" : [
-      {"day" : "Monday", "time" : "5:00-5:50"}, {"day" :"Wednesday", "time" : "5:00-5:50"}, {"day" : "Friday", "time" : "5:00-5:50"}
+      {"day" : "Tuesday", "time" : "9:30-10:50"}, {"day" :"Thursday", "time" : "9:30-10:50"}
     ],
 
-    "discussion_time" : [{"day" : "Tuesday", "time" : "9:00-9:50"}, {"day" :"Thursday", "time" : "3:00-3:50"}],
+    "discussion_time" : [{"day" : "Monday", "time" : "1:00-1:50"}, {"day" : "Monday", "time" : "4:00-4:50"}],
 
-    "prereqs" : ["CSE100", "CSE 105"],
+    "prereqs" : ["COGS 1"],
 
     "cape_review" : [
     ]
@@ -17,10 +17,335 @@
   "1" : {
 
     "lecture_time" : [
+      {"day" : "Tuesday", "time" : "2:00-3:20"}, {"day" :"Thursday", "time" : "2:00-3:20"}
     ],
+
+    "discussion_time" : [{"day" : "Wednesday", "time" : "3:00-3:50"}],
+
+    "prereqs" : ["CSE100"],
 
     "cape_review" : [
     ]
   },
 
+  "2" : {
+
+   "lecture_time" : [
+      {"day" : "Monday", "time" : "5:00-6:20"}, {"day" :"Wednesday", "time" : "5:00-6:20"}
+    ],
+
+    "discussion_time" : [{"day" : "Wednesday", "time" : "3:00-3:50"}],
+
+    "prereqs" : ["CSE 12", "CSE 21", "CSE 100"],
+
+    "cape_review" : [
+    ]
+  },
+
+  "3" : {
+
+    "lecture_time" : [
+      {"day" : "Tuesday", "time" : "12:30-1:50"}, {"day" :"Thursday", "time" : "12:30-1:50"}
+    ],
+
+    "discussion_time" : [{"day" : "Wednesday", "time" : "9:00-9:50"}, {"day" : "Wednesday", "time" : "11:00-11:50"}],
+
+    "prereqs" : ["COGS 107B"],
+
+    "cape_review" : [
+    ]
+  },
+
+  "4" : {
+
+    "lecture_time" : [
+      {"day" : "Tuesday", "time" : "11:00-12:20"}, {"day" :"Thursday", "time" : "11:00-12:20"}
+    ],
+
+    "prereqs" : ["CSE 181", "CSE 182"],
+
+    "cape_review" : [
+    ]
+  },
+
+ "5" : {
+
+    "lecture_time" : [
+      {"day" : "Tuesday", "time" : "9:30-10:50"}, {"day" :"Thursday", "time" : "9:30-10:50"}
+    ],
+
+    "discussion_time" : [{"day" : "Monday", "time" : "4:00-4:50"}, {"day" : "Friday", "time" : "2:00-2:50"}],
+
+    "prereqs" : ["BILD 10", "COGS 17"],
+
+    "cape_review" : [
+    ]
+  },
+
+  "6" : {
+
+    "lecture_time" : [
+      {"day" : "Tuesday", "time" : "3:30-4:50"}, {"day" :"Thursday", "time" : "3:30-4:50"}
+    ],
+
+    "discussion_time" : [{"day" :"Monday", "time" : "3:00-3:50"}, {"day" : "Wednesday", "time" : "1:00-1:50"}],
+
+    "prereqs" : ["COGS 120", "COGS 18", "CSE 8A/8B/11"],
+
+    "cape_review" : [
+    ]
+  },
+
+  "7" : {
+    "lecture_time" : [
+      {"day" : "Monday", "time" : "12:00-12:50"}, {"day" :"Wednesday", "time" : "12:00-12:50"}, {"day" :"Friday", "time" : "12:00-12:50"}
+    ],
+
+    "discussion_time" : [{"day" : "Wednesday", "time" : "3:00-3:50"}],
+
+    "prereqs" : ["CSE 100"],
+
+    "cape_review" : [
+    ]
+  },
+
+  "8" : {
+
+   "lecture_time" : [
+      {"day" : "Monday", "time" : "9:00-10:20"}, {"day" :"Wednesday", "time" : "9:00-10:20"}
+    ],
+
+    "prereqs" : ["Senior Standing"],
+
+    "cape_review" : [
+    ]
+  },
+
+  "9" : {
+    "lecture_time" : [
+      {"day" : "Monday", "time" : "5:00-5:50"}, {"day" :"Wednesday", "time" : "5:00-5:50"}
+    ],
+
+    "prereqs" : ["CSE 100"],
+
+    "cape_review" : [
+    ]
+  },
+
+  "10" : {
+
+   "lecture_time" : [
+      {"day" : "Friday", "time" : "11:00-11:50"}
+    ],
+
+    "discussion_time" : [{"day" : "Friday", "time" : "12:00-12:50"}],
+
+    "prereqs" : ["CSE 110", "CSE 140", "CSE 140L"],
+
+    "cape_review" : [
+    ]
+  },
+
+
+  "11" : {
+
+    "lecture_time" : [
+      {"day" : "Monday", "time" : "2:00-2:50"}, {"day" :"Wednesday", "time" : "2:00-2:50"}, {"day" : "Friday", "time" : "2:00-2:50"}
+    ],
+
+    "discussion_time" : [{"day" : "Friday", "time" : "9:00-9:50"}, {"day" :"Friday", "time" : "3:00-3:50"}],
+
+    "prereqs" : ["CSE 12", "CSE 21"],
+
+    "cape_review" : [
+    ]
+  },
+
+  "12" : {
+
+    "lecture_time" : [
+      {"day" : "Monday", "time" : "2:00-2:50"}, {"day" :"Wednesday", "time" : "2:00-2:50"}, {"day" : "Friday", "time" : "2:00-2:50"}
+    ],
+
+    "discussion_time" : [{"day" : "Friday", "time" : "9:00-9:50"}, {"day" :"Friday", "time" : "3:00-3:50"}],
+
+    "prereqs" : ["CSE 12", "CSE 21"],
+
+    "cape_review" : [
+    ]
+  },
+
+  "13" : {
+
+    "lecture_time" : [
+      {"day" : "Tuesday", "time" : "3:30-4:50"}, {"day" :"Thursday", "time" : "3:30-4:50"}
+    ],
+
+    "discussion_time" : [{"day" : "Wednesday", "time" : "1:00-1:50"}, {"day" :"Wednesday", "time" : "2:00-2:50"}],
+
+    "prereqs" : ["CSE 12", "CSE 21"],
+
+    "cape_review" : [
+    ]
+  },
+
+  "14" : {
+
+    "lecture_time" : [
+      {"day" : "Tuesday", "time" : "9:30-10:50"}, {"day" :"Thursday", "time" : "9:30-10:50"}
+    ],
+
+    "discussion_time" : [{"day" : "Friday", "time" : "3:00-3:50"}],
+
+    "prereqs" : ["CSE 30", "CSE 101"],
+
+    "cape_review" : [
+    ]
+  },
+
+  "15" : {
+
+    "lecture_time" : [
+      {"day" : "Monday", "time" : "5:00-6:20"}, {"day" :"Wednesday", "time" : "5:00-6:20"}
+    ],
+
+    "discussion_time" : [{"day" : "Friday", "time" : "3:00-3:50"}],
+
+    "prereqs" : ["CSE 21"],
+
+    "cape_review" : [
+    ]
+  },
+
+  "16" : {
+
+    "lecture_time" : [
+      {"day" : "Tuesday", "time" : "12:30-1:50"}, {"day" :"Thursday", "time" : "12:30-1:50"}
+    ],
+
+    "discussion_time" : [{"day" : "Wednesday", "time" : "5:00-5:50"}, {"day" : "Wednesday", "time" : "6:00-6:50"}],
+
+    "prereqs" : ["CSE 12", "CSE 100", "CSE 105"],
+
+    "cape_review" : [
+    ]
+  },
+
+  "17" : {
+
+    "lecture_time" : [
+      {"day" : "Tuesday", "time" : "3:30-4:50"}, {"day" :"Thursday", "time" : "3:30-4:50"}
+    ],
+
+    "discussion_time" : [{"day" : "Friday", "time" : "2:00-2:50"}, {"day" :"Friday", "time" : "3:00-3:50"}],
+
+    "prereqs" : ["CSE 100", "CSE 105", "CSE 110", "CSE 130"],
+
+    "cape_review" : [
+    ]
+  },
+
+  "18" : {
+
+   "lecture_time" : [
+      {"day" : "Tuesday", "time" : "5:00-6:20"}, {"day" :"Thursday", "time" : "5:00-6:20"}
+    ],
+
+    "discussion_time" : [{"day" : "Friday", "time" : "4:00-4:50"}],
+
+    "prereqs" : ["CSE 20"],
+
+    "cape_review" : [
+    ]
+  },
+
+  "19" : {
+
+   "lecture_time" : [
+      {"day" : "Friday", "time" : "4:00-4:50"}
+    ],
+
+    "discussion_time" : [{"day" : "Friday", "time" : "3:00-3:50"}],
+
+    "prereqs" : ["CSE 20", "CSE 30", "CSE 140 Concurrently"],
+
+    "cape_review" : [
+    ]
+  },
+
+  "20" : {
+
+    "lecture_time" : [
+      {"day" : "Tuesday", "time" : "9:30-10:50"}, {"day" :"Thursday", "time" : "9:30-10:50"}
+    ],
+
+    "discussion_time" : [{"day" : "Wednesday", "time" : "4:00-4:50"}],
+
+    "prereqs" : ["CSE 140", "CSE 140L"],
+
+    "cape_review" : [
+    ]
+  },
+
+ "21" : {
+
+   "lecture_time" : [
+      {"day" : "Tuesday", "time" : "11:00-12:20"}, {"day" :"Thursday", "time" : "11:00-12:20"}
+    ],
+
+    "prereqs" : ["CSE 30"],
+
+    "cape_review" : [
+    ]
+  },
+
+  "22" : {
+
+    "lecture_time" : [
+      {"day" : "Tuesday", "time" : "3:30-4:50"}, {"day" :"Thursday", "time" : "3:30-4:50"}
+    ],
+
+    "prereqs" : ["CSE 141", "CSE 141L"],
+
+    "cape_review" : [
+    ]
+  },
+
+  "23" : {
+
+    "lecture_time" : [
+      {"day" : "Tuesday", "time" : "2:00-3:20"}, {"day" :"Thursday", "time" : "2:00-3:20"}
+    ],
+
+    "prereqs" : ["Consent of Department/Instructor"],
+
+    "cape_review" : [
+    ]
+  },
+
+
+  "24" : {
+
+    "lecture_time" : [
+      {"day" : "Tuesday", "time" : "5:00-6:20"}, {"day" :"Thursday", "time" : "5:00-6:20"}
+    ],
+
+    "prereqs" : ["Consent of Department/Instructor"],
+
+    "cape_review" : [
+    ]
+  },
+
+
+  "25" : {
+
+    "lecture_time" : [
+      {"day" : "Tuesday", "time" : "12:30-1:50"}, {"day" :"Thursday", "time" : "12:30-1:50"}
+    ],
+
+    "prereqs" : ["Consent of Department/Instructor"],
+
+    "cape_review" : [
+    ]
+  },
 }

@@ -1,11 +1,11 @@
 [
   	{
   		"id" : 0,
-  		"name" : "CSE 150 - Introduction to Artificial Intelligence: Search and Reasoning",
+  		"name" : "COGS 101B - Learning, Memory, and Attention ",
   		"enrollment" : [],
   		"max_enrollment" : 50,
-  		"instructor" : "Sanjoy Dasgupta",
-      "group" : "Artificial Intelligence"
+  		"instructor" : "Sarah Creel",
+      "group" : "Cognitive Science"
   	},
   	{
   		"id" : 1,
@@ -17,50 +17,50 @@
   	},
   	{
   		"id" : 2,
-  		"name" : "CSE 152 - Introduction to Computer Vision",
+  		"name" : "CSE 101 - Design and Analysis of Algorithm",
   		"enrollment" : [],
   		"max_enrollment" : 50,
-  		"instructor" : "Yoav Freund",
-      "group" : "Artificial Intelligence"
+  		"instructor" : "Russell Impagliazzo",
+      "group" : "Software Engineering"
   	},
   	{
   		"id" : 3,
-  		"name" : "CSE 166 - Image Processing",
+  		"name" : "COGS 107C - Cognitive Neuroscience",
   		"enrollment" : [],
   		"max_enrollment" : 50,
-  		"instructor" : "Charles Elkan",
-      "group" : "Artificial Intelligence"
+  		"instructor" : "Terry Jernigan",
+      "group" : "Cognitive Science"
   	},
   	{
-  		"id" : 50,
-  		"name" : "CSE 181 - Molecular Sequence Analysis",
+  		"id" : 4,
+  		"name" : "CSE 184 - Computational Molecular Biology",
   		"enrollment" : [],
   		"max_enrollment" : 50,
-  		"instructor" : "Pavel Pevzner",
+  		"instructor" : "Wei Wang",
       "group" : "Bioinformatics"
   	},
   	{
   		"id" : 5,
-  		"name" : "CSE 182 - Biological Databases",
+  		"name" : " COGS 115 - Neurological Development and Cognitive Change",
   		"enrollment" : [],
   		"max_enrollment" : 50,
-  		"instructor" : "Vineet Bafna",
-      "group" : "Bioinformatics"
+  		"instructor" : "Deak Gedeon",
+      "group" : "Cognitive Science"
   	},
   	{
   		"id" : 6,
-  		"name" : "CSE 112 - Advanced Software Engineering",
+  		"name" : "COGS - 121. Human Computer Interaction Programming Studio",
   		"enrollment" : [],
   		"max_enrollment" : 50,
-  		"instructor" : "Bill Griswald",
-      "group" : "Software Engineering"
+  		"instructor" : "Nadir Weibel",
+      "group" : "Cognitive Science"
   	},
   	{
   		"id" : 7,
-  		"name" : "CSE 118 - Ubiquitous Computing",
+  		"name" : "CSE 168 - Computer Graphics II: Rendering",
   		"enrollment" : [],
   		"max_enrollment" : 50,
-  		"instructor" : "Gary Gillespie",
+  		"instructor" : "Henrik Jensen",
       "group" : "Software Engineering"
   	},
   	{
@@ -81,10 +81,10 @@
   	},
   {
       "id" : 10,
-      "name" : "CSE 107 - Introduction to Modern Cryptography",
+      "name" : "CSE 141L - Project in Computer Architecture",
       "enrollment" : [],
       "max_enrollment" : 50,
-      "instructor" : "Mihir Bellare",
+      "instructor" : "James Swanson",
       "group" : "Software Engineering"
     },
 	{
