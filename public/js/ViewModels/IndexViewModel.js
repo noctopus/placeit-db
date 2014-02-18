@@ -93,7 +93,7 @@ function IndexViewModel(repository, element){
 
 	self.evaluateClass = function(model){
 		if(model.enrollment() >= model.max_enrollment - 49 || true){
-			toastr.info(model.name +" is reaching maximum capacity!");
+			//toastr.info(model.name +" is reaching maximum capacity!");
 		}
 	}
 

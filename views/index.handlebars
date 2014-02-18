@@ -42,6 +42,7 @@
 </head>
 <script>
 $(document).ready(function(){
+  toastr.options.showDuration = 50;
   var ViewModel = new IndexViewModel(IndexModel, document.getElementById("container"));
   ViewModel.initialize();
 });
@@ -130,7 +131,7 @@ $(document).ready(function(){
             <div data-bind="html : '<small> Cluster :  ' + group + '</small>'"></div>
           </div>
           <div class="col-md-1">
-            <div data-bind="css : {'warning' : enrollment() >= max_enrollment-49}, text : enrollment() + '/' + max_enrollment"></div>
+            <div data-bind="css : {'warning' : enrollment() >= max_enrollment-5}, text : enrollment() + '/' + max_enrollment"></div>
           </div>
 
           <div class="col-md-3">
