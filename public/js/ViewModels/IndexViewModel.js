@@ -6,9 +6,7 @@ function IndexViewModel(repository, element){
 		allClasses : ko.observableArray([]),
 		currentClasses : ko.observableArray([]),
 		logout : function(){
-			$.post("/logout", function(){
-				location.href="/";
-			});				
+			self.logout();
 		},
 		getInfo : function(model){
 			window.open("/info?id="+model.id);
@@ -22,6 +20,12 @@ function IndexViewModel(repository, element){
 				model.enrolled(true);
 				self.db.Enroll(id, model.enrollment());
 			}
+	}
+
+	self.logout = function(){
+			$.post("/logout", function(){
+				location.href="/";
+			});		
 	}
 
 	self.drop = function(model){
@@ -41,7 +45,7 @@ function IndexViewModel(repository, element){
 			self.enroll(model);
 		}
 	}
-	
+
 	ViewModel().toggleClass = function(model){
 		self.toggle(model);
 	}

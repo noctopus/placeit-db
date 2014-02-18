@@ -15,6 +15,9 @@ function InfoViewModel(repository, element, enrollmentService){
 		messages : ko.observableArray([]),
 		schedule : ko.observable(),
 		currentMessage : ko.observable(),
+		logout : function(){
+			self.enrollmentService.logout();
+		}
 	});
 
 
