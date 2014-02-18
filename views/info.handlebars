@@ -22,13 +22,15 @@
 <script src="/js/socket.io/dist/socket.io.js"></script>
 <script src="http://code.highcharts.com/highcharts.js"></script>
 <script src="/js/gradeChart.js"></script>
+<script src="/js/ViewModels/IndexViewModel.js"></script>
+<script src="/js/Models/IndexModel.js"></script>
 <script src="/js/Models/InfoModel.js"></script>
 <script src="/js/ViewModels/InfoViewModel.js"></script>
 <script src="/js/barChart.js"></script>
 </head>
 <script>
 $(document).ready(function(){
-  var ViewModel = new InfoViewModel(InfoModel, document.getElementById("container"));
+  var ViewModel = new InfoViewModel(InfoModel, document.getElementById("container"), new IndexViewModel(IndexModel));
   ViewModel.initialize();
 });
 </script>
@@ -47,7 +49,15 @@ $(document).ready(function(){
       <li class="active" data-bind="text : _class().name"></li>
     </ol>
 
-    <h3>Presented by <span data-bind="text : _class().instructor"></span></h3>
+    <h3>Presented by <span data-bind="text : _class().instructor"></span>
+      
+      {{#if loggedin}}
+         <a data-bind="enroll : _class, css : {'btn-success' : true}, 
+         text : _class().enrolled() == false? 'Enroll' : 'Drop'" class="btn">Enroll</a></h3>
+      {{/if}}
+      {{#if notloggedin}}
+    </h3>
+      {{/if}}
 
 <!-- Nav tabs -->
 <ul class="nav nav-tabs">

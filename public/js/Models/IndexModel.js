@@ -21,9 +21,25 @@ function IndexModel(ViewModel){
 
   	}
 
+
   	self.GetEnrolledClasses = function(id, callback){
-  		callback([]);
+      $.get("/getFollowedClasses", function(data){
+        callback(data);
+      })  
   	}
+
+    self.FollowClass = function(id){
+      console.log("FOLLOWING " + id);
+      $.post("/follow", {id : id}, function(msg){
+
+      });
+    }
+
+    self.UnFollowClass = function(id){
+      $.post("/unfollow", {id : id}, function(msg){
+
+      });
+    }
 
   	self.Enroll = function(id, enrollment){
   		$.post("/enrollments/add", {id : id, count : enrollment}, function(msg){

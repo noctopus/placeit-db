@@ -5,34 +5,35 @@ function getID(){
 		return id;
 }
 
-function InfoViewModel(repository, element){
+function InfoViewModel(repository, element, enrollmentService){
 	var self = this;
 	self.element = element;
 	self.db = new repository(self);
+	self.enrollmentService = enrollmentService;
 	var ViewModel = ko.observable({
-		_class : ko.observable({name : "Not loaded yet"}),
+		_class : ko.observable({name : "Not loaded yet", enrolled : ko.observable(false)}),
 		messages : ko.observableArray([]),
 		schedule : ko.observable(),
-		currentMessage : ko.observable()
+		currentMessage : ko.observable(),
 	});
 
 
 
-	ko.bindingHandlers.submitMessage = {
-		update : function(element, valueAccessor){
+	ko.bindingHandlers.enroll = {
+		init : function(element, valueAccessor){
 			$(element).click(function(){
-				ViewModel().messages.push(valueAccessor()());
+				self.enrollmentService.toggle(valueAccessor()());
 			});
 		}
 	}
-
-
 
 	self.initialize = function(){
 		var id = getID();
 
 		self.db.GetClass(id, function(_class){
+			_class.enrolled = ko.observable(_class.enrolled);
 			ViewModel()._class(_class);
+
 
 		ko.bindingHandlers.gradechart = {
 			init : function(element, valueAccessor){

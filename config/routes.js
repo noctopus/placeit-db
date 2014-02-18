@@ -19,4 +19,3 @@ app.post('/login', users.session
 app.post("/logout", users.logout)
 }
 
-//app.get("/GetClasses", classes.query);

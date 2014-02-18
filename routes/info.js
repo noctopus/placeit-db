@@ -1,3 +1,11 @@
 exports.viewInfo = function(req, res){
-	res.render('info');
+	var sendInfo = {};
+	if(req.session.user != null){
+		sendInfo.loggedin = true;
+		sendInfo.notloggedin = false;
+	}else{
+		sendInfo.loggedin = false;
+		sendInfo.notloggedin = true;
+	}
+	res.render('info', sendInfo);
 }

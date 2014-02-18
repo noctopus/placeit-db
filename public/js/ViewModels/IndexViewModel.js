@@ -12,33 +12,38 @@ function IndexViewModel(repository, element){
 		},
 		getInfo : function(model){
 			window.open("/info?id="+model.id);
-		},
+		}
+	});
 
-		enroll : function(model){
+	self.enroll = function(model){
 			var id = model.id;
 			var confirm = window.confirm("Are you sure you want to enroll?");
 			if(confirm){
 				model.enrolled(true);
 				self.db.Enroll(id, model.enrollment());
 			}
-		},
-		drop : function(model){
+	}
+
+	self.drop = function(model){
 			var id = model.id;
 			var confirm = window.confirm("Are you sure you want to drop?");
 			if(confirm){
 				model.enrolled(false);
 				self.db.Drop(id, model.enrollment());
 			}
-		}
-	});
+	}
 
-	ViewModel().toggleClass = function(model){
+	self.toggle = function(model){
 		if (model.enrolled()) {
-			ViewModel().drop(model);
+			self.drop(model);
 		}
 		else {
-			ViewModel().enroll(model);
+			self.enroll(model);
 		}
+	}
+	
+	ViewModel().toggleClass = function(model){
+		self.toggle(model);
 	}
 
 	ko.bindingHandlers.info = {
@@ -64,15 +69,16 @@ function IndexViewModel(repository, element){
 	}
 
 	ViewModel().toggle = function(model){
-		console.log(model);
 		if(model.followed() == true){
 			var id = model.id;
+			self.db.UnFollowClass(model.id);
 			var returner = [];
 			var arr = ViewModel().currentClasses().filter(function(element){
 				return element != model.id;
 			});
 			ViewModel().currentClasses(arr);
 		}else{
+			self.db.FollowClass(model.id);
 			var arr = ViewModel().currentClasses();
 			arr.push(model.id);
 			ViewModel().currentClasses(arr);

@@ -68,9 +68,40 @@ fs.readFile("./schedules.json", function(err, data){
 	schedules = JSON.parse(data);
 });
 
+app.get("/getFollowedClasses", function(req,res){
+	console.log(req.session);
+	if(req.session.following == null){
+		res.json([]);
+	}else{
+		res.json(req.session.following);	
+	}
+});
+
+app.post("/follow", function(req,res){
+	console.log(req.body);
+	if(req.session.following == null){
+		req.session.following = [];
+	}
+	
+	req.session.following.push(parseInt(req.body.id));
+	res.end();
+});
+
+app.post("/unfollow", function(req,res){
+	if(req.session.following == null){
+		req.session.following = [];
+	}else{
+		var index = req.session.following.indexOf(parseInt(req.body.id))	;
+		if(index >= 0){
+			req.session.following.splice(index, 1);
+		}
+	}
+	res.end();
+});
+
 app.get("/classes", function(req,res){
 	var classes = enrollments.classes;
-	var returner = JSON.parse(JSON.stringify(classes));	console.log(req.session.user);
+	var returner = JSON.parse(JSON.stringify(classes));
 	for(var i = 0; i < classes.length; i++){
 		if(req.session.user != null && returner[i].enrollment.indexOf(req.session.user.pid) >= 0){
 			returner[i].enrolled = true;
@@ -89,11 +120,16 @@ app.get("/classes/:id", function(req,res){
 	_class = JSON.parse(JSON.stringify(_class));
 	var users = require("./controllers/users.js").getUsers(function(users){
 		var classes = [];
-		console.log(_class);
+		if(req.session.user != null){
+			_class.enrolled = false;
+		}
 		for(var i = 0; i < users.length; i++){
 			if(_class.enrollment.indexOf(users[i].pid) >= 0){
 				users[i].password = "";
 				classes.push(users[i]);
+				if(req.session.user != null && req.session.user.pid == users[i].pid){
+					_class.enrolled = true;
+				}
 			}
 		}
 

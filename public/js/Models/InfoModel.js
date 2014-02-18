@@ -6,7 +6,7 @@ function InfoModel(ViewModel){
       $.get("/classes/"+id, function(_class){
         _class = JSON.parse(_class);
         _class.enrollment = ko.observableArray(_class.enrollment);
-        callback(_class)
+        callback(_class);
       });
     }
 

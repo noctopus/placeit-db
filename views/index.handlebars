@@ -61,6 +61,44 @@ $(document).ready(function(){
   </div><!-- /.container-fluid -->
 </nav>
 
+
+<!-- MODAL -->
+<div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Log In</h4>
+      </div>
+    <!--  <div class="modal-body">
+        <div style="width:100%; height:100%; "data-bind="gradechart : ''"></div>
+      </div>-->
+      <div class="modal-body">
+
+
+
+<div id="account" >
+
+<form class="form-inline" role="form" method="POST" action = "/login">
+  <div class="form-group">
+    <label class="sr-only" for="exampleInputEmail2">PID</label>
+    <input type="text" name="pid" class="form-control" id="exampleInputEmail2" placeholder="Enter PID">
+  </div>
+  <div class="form-group">
+    <label class="sr-only" for="exampleInputPassword2">password</label>
+    <input type="password" name="password" class="form-control" id="exampleInputPassword2" placeholder="Password">
+  </div>
+
+  <button type="submit" class="btn btn-default">Log in</button>
+</form>
+
+  </div>
+ </div>
+    </div>
+  </div>
+</div>
+<!-- MODAL -->
+
   <div class="classholder">
     <div data-bind="if : viewedClasses().length == 0">
       <div class="alert alert-warning">You aren't following any classes yet. Follow one now!</div>
@@ -163,54 +201,6 @@ $(document).ready(function(){
 </div>
 <!-- MODAL -->
 
-<!-- MODAL -->
-<div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title" id="myModalLabel">Log In</h4>
-      </div>
-    <!--  <div class="modal-body">
-        <div style="width:100%; height:100%; "data-bind="gradechart : ''"></div>
-      </div>-->
-      <div class="modal-body">
-
-
-
-<div id="account" >
-
-<form class="form-inline" role="form" method="POST" action = "/login">
-  <div class="form-group">
-    <label class="sr-only" for="exampleInputEmail2">PID</label>
-    <input type="text" name="pid" class="form-control" id="exampleInputEmail2" placeholder="Enter PID">
-  </div>
-  <div class="form-group">
-    <label class="sr-only" for="exampleInputPassword2">password</label>
-    <input type="password" name="password" class="form-control" id="exampleInputPassword2" placeholder="Password">
-  </div>
-
-  <button type="submit" class="btn btn-default">Log in</button>
-</form>
-
-  </div>
- </div>
-
-
-
-
-
-
-
-
-
-
-
-    
-    </div>
-  </div>
-</div>
-<!-- MODAL -->
 
 
 
