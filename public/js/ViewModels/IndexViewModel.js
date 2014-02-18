@@ -86,13 +86,22 @@ function IndexViewModel(repository, element){
 			var arr = ViewModel().currentClasses();
 			arr.push(model.id);
 			ViewModel().currentClasses(arr);
+			self.evaluateClass(model);
 		}
 	};
+
+
+	self.evaluateClass = function(model){
+		if(model.enrollment() >= model.max_enrollment - 49 || true){
+			toastr.info(model.name +" is reaching maximum capacity!");
+		}
+	}
 
 	ViewModel().viewedClasses =  ko.computed(function(){
 		var classes = this();
 		return ViewModel().allClasses().filter(function(element){
-			return classes.indexOf(element.id) >= 0
+			var returner = classes.indexOf(element.id) >= 0;
+			return returner;
 		});
 	}, ViewModel().currentClasses);
 
@@ -114,17 +123,23 @@ function IndexViewModel(repository, element){
 		ko.applyBindings(ViewModel, self.element);
 
 		self.db.GetClasses(function(classes){
-			self.db.GetEnrolledClasses(0, function(currclasses){
+				self.db.GetEnrolledClasses(0, function(currclasses){
 				ViewModel().currentClasses(currclasses);
+				ViewModel().allClasses().forEach(function(element){
+					if(element.followed()){
+						self.evaluateClass(element);
+					}
+				});
 			});
-			var enrolled = ViewModel().currentClasses();
+
 			classes.forEach(function(element, index){
 				classes[index].followed = ko.computed(function(){
 					var enrolled = this();
-					return enrolled.indexOf(element.id) >= 0
+					var returner = enrolled.indexOf(element.id) >= 0;
+					return returner;
 				},ViewModel().currentClasses);
-
 			});
+
 
 			ViewModel().allClasses(classes);
 		});

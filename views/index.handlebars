@@ -24,6 +24,8 @@
 <script src="/js/ViewModels/IndexViewModel.js"></script>
 <script src="http://code.highcharts.com/highcharts.js"></script>
 <script src="/js/gradeChart.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.min.css"></link>
 
 <style>
 .page-header {
@@ -31,6 +33,10 @@
 }
 #container{
 
+}
+
+.warning{
+  color : red;
 }
 </style>
 </head>
@@ -124,7 +130,7 @@ $(document).ready(function(){
             <div data-bind="html : '<small> Cluster :  ' + group + '</small>'"></div>
           </div>
           <div class="col-md-1">
-            <div data-bind="html : '<b>' + enrollment() + '/' + max_enrollment + '</b>'"></div>
+            <div data-bind="css : {'warning' : enrollment() >= max_enrollment-49}, text : enrollment() + '/' + max_enrollment"></div>
           </div>
 
           <div class="col-md-3">
@@ -174,7 +180,7 @@ $(document).ready(function(){
                       <td> <span data-bind="text : name"></span></td>
                     </tr>
                     <tr>
-                      <td data-bind="text :'Enrollments : ' +  enrollment() + '/' + max_enrollment"></td>
+                      <td data-bind="css : {'warning' : enrollment() >= max_enrollment-49}, text :'Enrollments : ' +  enrollment() + '/' + max_enrollment"></td>
                     </tr>
                     <tr>
                       <td>
