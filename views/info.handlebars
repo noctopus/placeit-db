@@ -42,8 +42,58 @@ $(document).ready(function(){
       <a class="navbar-brand" href="/">Web Reg <sup> 2.0 </sup></a>
     </div>
 
+      <ul class="nav navbar-nav navbar-right">
+        {{#if notloggedin}}
+        <li><button class="btn btn-default" style="margin-top:5px;" data-toggle="modal" data-target="#login">Login</button>
+           <button class="btn btn-default"  style="margin-top:5px;" onclick="window.open('/signup');" >Sign up</button>
+        </li>
+        {{/if}}
+        {{#if loggedin}}
+          <button class="btn btn-default" style="margin-top:5px;" data-bind="click: logout">Log Out </button>
+        {{/if}}
+      </ul>
   </div><!-- /.container-fluid -->
 </nav>
+
+
+<!-- MODAL -->
+<div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Log In</h4>
+      </div>
+    <!--  <div class="modal-body">
+        <div style="width:100%; height:100%; "data-bind="gradechart : ''"></div>
+      </div>-->
+      <div class="modal-body">
+
+
+
+<div id="account" >
+
+<form class="form-inline" role="form" method="POST" action = "/login">
+  <div class="form-group">
+    <label class="sr-only" for="exampleInputEmail2">PID</label>
+    <input type="text" name="pid" class="form-control" id="exampleInputEmail2" placeholder="Enter PID">
+  </div>
+  <div class="form-group">
+    <label class="sr-only" for="exampleInputPassword2">password</label>
+    <input type="password" name="password" class="form-control" id="exampleInputPassword2" placeholder="Password">
+  </div>
+
+  <button type="submit" class="btn btn-default">Log in</button>
+</form>
+
+  </div>
+ </div>
+    </div>
+  </div>
+</div>
+<!-- MODAL -->
+
+
     <ol class="breadcrumb">
       <li data-bind="text : _class().group"></li>
       <li class="active" data-bind="text : _class().name"></li>
@@ -68,7 +118,29 @@ $(document).ready(function(){
 </ul>
 
   <div class="tab-content">
-  <div class="tab-pane" id ="cape">CAPES</div>
+  <div class="tab-pane" id ="cape">
+  <table class="table table-bordered table-striped table-condensed table-responsive">
+      <thead>
+        <tr class="h5">
+          <td>Instructor</td>
+          <td>Course</td>
+          <td>Term</td>
+          <td>Enroll</td>
+          <td>Evals Made</td>
+          <td>Rcmnd Class</td>
+          <td>Rcmnd Instr</td>
+          <td>Study Hrs/wk</td>
+          <td>Avg Grade Expected</td>
+          <td>Avg Grade Received</td>
+        </tr>
+      </thead>
+      <tbody data-bind="foreach: _class().info.cape_review">
+        <tr data-bind="foreach: {data : $data, as : 'item'}">
+          <td data-bind="text : item"></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
   <div class="tab-pane" id="enrollment">
     <div class="row">
 
