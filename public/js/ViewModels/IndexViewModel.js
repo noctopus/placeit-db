@@ -14,6 +14,19 @@ function IndexViewModel(repository, element){
 		}
 	});
 
+	
+
+	ViewModel().searchClasses = ko.computed(function() {
+		var searchTerm = this().toLowerCase();
+		var returnArr = [];
+		return ViewModel().allClasses().filter(function(element) {
+		 	console.log(element.name, searchTerm);
+			return element.name.toLowerCase().indexOf(searchTerm) >= 0;
+		})
+		 //console.log(returnArr);
+		 //return returnArr;
+	}, ViewModel().searchQuery);
+
 	self.enroll = function(model){
 			var id = model.id;
 			var confirm = window.confirm("Are you sure you want to enroll?");
