@@ -168,6 +168,17 @@
       </div>-->
       <div class="modal-body" data-bind="foreach : Object.keys(groupedClasses())">
 
+<!-- MODAL -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Follow a Class </h4><br> 
+        <input type="text" class="form-control" data-bind="value : searchQuery", placeholder="Search class here">
+      </div>
+
+      <div class="modal-body" data-bind="foreach : Object.keys(groupedClasses())">
         <div class="panel-group" id="accordion">
           <div class="panel panel-default">
             <div class="panel-heading">

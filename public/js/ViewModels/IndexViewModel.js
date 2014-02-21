@@ -3,6 +3,7 @@ function IndexViewModel(repository, element){
 	self.element = element;
 	self.db = new repository(self);
 	var ViewModel = ko.observable({
+		searchQuery : ko.observable(''),
 		allClasses : ko.observableArray([]),
 		currentClasses : ko.observableArray([]),
 		logout : function(){
