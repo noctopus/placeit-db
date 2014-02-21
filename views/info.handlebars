@@ -102,7 +102,9 @@ $(document).ready(function(){
     <h3>Presented by <span data-bind="text : _class().instructor"></span>
       
       {{#if loggedin}}
-         <a data-bind="enroll : _class, css : {'btn-success' : true}, 
+         <a data-bind="enroll : _class, 
+         css : { 'btn-success' : !_class().enrolled(),
+         'btn-danger' : _class().enrolled()}, 
          text : _class().enrolled() == false? 'Enroll' : 'Drop'" class="btn">Enroll</a></h3>
       {{/if}}
       {{#if notloggedin}}

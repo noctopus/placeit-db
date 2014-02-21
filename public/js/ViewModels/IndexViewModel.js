@@ -10,7 +10,7 @@ function IndexViewModel(repository, element){
 			self.logout();
 		},
 		getInfo : function(model){
-			window.open("/info?id="+model.id);
+			 location.href = "/info?id="+model.id;
 		}
 	});
 
