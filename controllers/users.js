@@ -44,7 +44,9 @@ exports.session = function(req, res) {
                 res.redirect("/");
         }else{
             res.render("index",{
-                notloggedin : true
+                notloggedin : true,
+                loginFail : true,
+                errorMessage : "hello world"
             });
         }
         

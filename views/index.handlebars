@@ -7,158 +7,162 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap-theme.min.css">
-	<link href="/css/introHCI.css" rel="stylesheet">
-	<!-- this is a comment in HTML -->
+  <link href="/css/introHCI.css" rel="stylesheet">
+  <!-- this is a comment in HTML -->
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-    <![endif]-->     
-<script src="https://code.jquery.com/jquery.js"></script>
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
-<script src="/js/knockout.js"></script>
-<script src="/js/socket.io/dist/socket.io.js"></script>
-<script src="/js/Models/IndexModel.js"></script>
-<script src="/js/ViewModels/IndexViewModel.js"></script>
-<script src="http://code.highcharts.com/highcharts.js"></script>
-<script src="/js/gradeChart.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.min.css"></link>
+      <![endif]-->     
+      <script src="https://code.jquery.com/jquery.js"></script>
+      <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+      <script src="/js/knockout.js"></script>
+      <script src="/js/socket.io/dist/socket.io.js"></script>
+      <script src="/js/Models/IndexModel.js"></script>
+      <script src="/js/ViewModels/IndexViewModel.js"></script>
+      <script src="http://code.highcharts.com/highcharts.js"></script>
+      <script src="/js/gradeChart.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.min.js"></script>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.min.css"></link>
 
-<style>
-.page-header {
-  margin : 10px 0 20px;
-}
-#container{
+      <style>
+      .page-header {
+        margin : 10px 0 20px;
+      }
+      #container{
 
-}
+      }
 
-.warning{
-  color : red;
-}
-</style>
-</head>
-<script>
-$(document).ready(function(){
-  toastr.options.showDuration = 50;
-  var ViewModel = new IndexViewModel(IndexModel, document.getElementById("container"));
-  ViewModel.initialize();
-});
-</script>
-<body class="container" id="container">
-<nav class="navbar navbar-default"  style="margin-top:10px;" role="navigation">
-  <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <a class="navbar-brand" href="/">Web Reg <sup> 2.0 </sup></a>
-    </div>
+      .warning{
+        color : red;
+      }
+      </style>
+    </head>
+    <script>
+    $(document).ready(function(){
+      toastr.options.showDuration = 50;
+      var ViewModel = new IndexViewModel(IndexModel, document.getElementById("container"));
+      ViewModel.initialize();
+    });
+    </script>
+    <body class="container" id="container">
+      <nav class="navbar navbar-default"  style="margin-top:10px;" role="navigation">
+        <div class="container-fluid">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <div class="navbar-header">
+            <a class="navbar-brand" href="/">Web Reg <sup> 2.0 </sup></a>
+          </div>
 
-      <ul class="nav navbar-nav navbar-right">
-        {{#if notloggedin}}
-        <li><button class="btn btn-default" style="margin-top:5px;" data-toggle="modal" data-target="#login">Login</button>
-           <button class="btn btn-default"  style="margin-top:5px;" onclick="window.open('/signup');" >Sign up</button>
-        </li>
-        {{/if}}
-        {{#if loggedin}}
-          <button class="btn btn-default" style="margin-top:5px;" data-bind="click: logout">Log Out </button>
-        {{/if}}
-      </ul>
-  </div><!-- /.container-fluid -->
-</nav>
+          <ul class="nav navbar-nav navbar-right">
+            {{#if notloggedin}}
+            <li><button class="btn btn-default" style="margin-top:5px;" data-toggle="modal" data-target="#login">Login</button>
+             <button class="btn btn-default"  style="margin-top:5px;" onclick="window.open('/signup');" >Sign up</button>
+           </li>
+           {{/if}}
+           {{#if loggedin}}
+           <button class="btn btn-default" style="margin-top:5px;" data-bind="click: logout">Log Out </button>
+           {{/if}}
+         </ul>
+       </div><!-- /.container-fluid -->
+     </nav>
 
 
-<!-- MODAL -->
-<div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title" id="myModalLabel">Log In</h4>
-      </div>
+  <!-- LOG-IN MODAL -->
+     <div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title" id="myModalLabel">Log In</h4>
+          </div>
     <!--  <div class="modal-body">
         <div style="width:100%; height:100%; "data-bind="gradechart : ''"></div>
       </div>-->
       <div class="modal-body">
+        <div id="account">
+          <form class="form-inline" role="form" method="POST" action = "/login">
+            <div class="form-group">
+              <label class="sr-only" for="exampleInputEmail2">PID</label>
+              <input type="text" name="pid" class="form-control" id="exampleInputEmail2" placeholder="Enter PID">
+            </div>
+            <div class="form-group">
+              <label class="sr-only" for="exampleInputPassword2">password</label>
+              <input type="password" name="password" class="form-control" id="exampleInputPassword2" placeholder="Password">
+            </div>
 
+            <button type="submit" class="btn btn-default">Log in</button>
 
+          </form>
 
-<div id="account" >
-
-<form class="form-inline" role="form" method="POST" action = "/login">
-  <div class="form-group">
-    <label class="sr-only" for="exampleInputEmail2">PID</label>
-    <input type="text" name="pid" class="form-control" id="exampleInputEmail2" placeholder="Enter PID">
-  </div>
-  <div class="form-group">
-    <label class="sr-only" for="exampleInputPassword2">password</label>
-    <input type="password" name="password" class="form-control" id="exampleInputPassword2" placeholder="Password">
-  </div>
-
-  <button type="submit" class="btn btn-default">Log in</button>
-</form>
-
-  </div>
- </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
-<!-- MODAL -->
+<!-- END LOG-IN MODAL -->
 
-  <div class="classholder">
-    <div data-bind="if : viewedClasses().length == 0">
-      <div class="alert alert-warning">You aren't following any classes yet. Follow one now!</div>
+<div class="classholder">
+  {{#if loginFail}}
+  
+    <div id="loginfail" class="alert alert-danger">
+      Login failed. Please try again.
     </div>
+  {{/if}}
 
-    {{#if notloggedin}}
-     <div id ="loginpls" class="alert alert-warning">To enroll in a class, please log in or sign up.
-     </div>
-    {{/if}}
-    <div data-bind="foreach: viewedClasses()">
+  <div data-bind="if : viewedClasses().length == 0">
+    <div class="alert alert-warning">You aren't following any classes yet. Follow one now!</div>
+  </div>
 
-      <div class="alert alert-success">
-        <div class="row">
+  {{#if notloggedin}}
+  <div id ="loginpls" class="alert alert-warning">To enroll in a class, please log in or sign up.
+  </div>
+  {{/if}}
+  <div data-bind="foreach: viewedClasses()">
 
-          <div class="col-md-2">
-            <div data-bind="html : '<b>' + name + '</b>'"></div>
-          </div>
+    <div class="alert alert-success">
+      <div class="row">
 
-          <div class="col-md-4">
-            <div data-bind="html : '<small> Taught by ' + instructor + '</small>'"></div>
-          </div>
-          <div class="col-md-2">
-            <div data-bind="html : '<small> Cluster :  ' + group + '</small>'"></div>
-          </div>
-          <div class="col-md-1">
-            <div data-bind="css : {'warning' : enrollment() >= max_enrollment-5}, text : enrollment() + '/' + max_enrollment"></div>
-          </div>
+        <div class="col-md-2">
+          <div data-bind="html : '<b>' + name + '</b>'"></div>
+        </div>
 
-          <div class="col-md-3">
-            <button data-bind="click : $parent.getInfo" class="btn btn-info">Info</button>
-            <button data-bind="click : $parent.toggle" class="btn btn btn-primary">Unfollow</button>
-            <button data-bind="visible : {{#if notloggedin}} false {{/if}} {{#if loggedin}} true {{/if}}, click : $parent.toggleClass, css: {'btn-success': !enrolled(), 'btn-danger': enrolled() }" class="btn">
-                <span data-bind="visible: !enrolled()">Enroll</span>
-                <span data-bind="visible: enrolled()">Drop</span>
-              </button>
-          </div>
+        <div class="col-md-4">
+          <div data-bind="html : '<small> Taught by ' + instructor + '</small>'"></div>
+        </div>
+        <div class="col-md-2">
+          <div data-bind="html : '<small> Cluster :  ' + group + '</small>'"></div>
+        </div>
+        <div class="col-md-1">
+          <div data-bind="css : {'warning' : enrollment() >= max_enrollment-5}, text : enrollment() + '/' + max_enrollment"></div>
+        </div>
 
+        <div class="col-md-3">
+          <button data-bind="click : $parent.getInfo" class="btn btn-info">Info</button>
+          <button data-bind="click : $parent.toggle" class="btn btn btn-primary">Unfollow</button>
+          <button data-bind="visible : {{#if notloggedin}} false {{/if}} {{#if loggedin}} true {{/if}}, click : $parent.toggleClass, css: {'btn-success': !enrolled(), 'btn-danger': enrolled() }" class="btn">
+            <span data-bind="visible: !enrolled()">Enroll</span>
+            <span data-bind="visible: enrolled()">Drop</span>
+          </button>
         </div>
 
       </div>
 
     </div>
 
-   <button class="btn btn-info"  data-toggle="modal" data-target="#myModal">Follow a class</button>
+  </div>
 
-<!-- MODAL -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title" id="myModalLabel">Follow a Class</h4>
-      </div>
+  <button class="btn btn-info"  data-toggle="modal" data-target="#myModal">Follow a class</button>
+
+  <!-- MODAL -->
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title" id="myModalLabel">Follow a Class</h4>
+        </div>
     <!--  <div class="modal-body">
         <div style="width:100%; height:100%; "data-bind="gradechart : ''"></div>
       </div>-->
@@ -170,7 +174,7 @@ $(document).ready(function(){
               <h4 class="panel-title">
                 <a data-toggle="collapse" data-bind="text : $data, attr : {href : '#'+$data.slice(0,4)}" data-parent="#accordion" >
                 </a>
-               </h4>
+              </h4>
             </div>
             <div data-bind="attr : {id : $data.slice(0,4)}" class="panel-collapse collapse">
 
@@ -187,24 +191,24 @@ $(document).ready(function(){
                       <td>
                         <button data-bind="info : $data" class="btn btn-info"> INFO </button>                        
                         <button class="btn btn-success"   
-                          data-bind="toggle : $data, text : followed()? 'Unfollow' : 'Follow'" >
-                        </button>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-
+                        data-bind="toggle : $data, text : followed()? 'Unfollow' : 'Follow'" >
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
+
           </div>
         </div>
+      </div>
 
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
     </div>
   </div>
+</div>
 </div>
 <!-- MODAL -->
 
