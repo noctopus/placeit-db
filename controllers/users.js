@@ -41,7 +41,11 @@ exports.session = function(req, res) {
     User.findOne({pid : user.pid, password : user.password}, function(err, doc){
         if(doc){
             req.session.user = doc; 
-                res.redirect("/");
+                res.render("index", {
+                    notloggedin : false,
+                    loggedin : true,
+                    loginFail : false
+                });
         }else{
             res.render("index",{
                 notloggedin : true,
