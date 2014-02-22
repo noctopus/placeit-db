@@ -45,6 +45,11 @@ if ('development' == app.get('env')) {
 }
 //models
 require("./models/users.js");
+require("./models/classes.js");
+require("./models/schedules.js");
+
+//contorllers
+var Class = require("./controllers/classes.js");
 
 // Bootstrap routes
 require('./config/routes')(app, passport);
@@ -64,9 +69,6 @@ fs.readFile("./classes.json", function(err, data){
 	app.post("/enrollments/drop", enrollments.drop(io.sockets));
 });
 
-fs.readFile("./schedules.json", function(err, data){
-	schedules = JSON.parse(data);
-});
 
 app.get("/getFollowedClasses", function(req,res){
 	console.log(req.session);
@@ -99,49 +101,7 @@ app.post("/unfollow", function(req,res){
 	res.end();
 });
 
-app.get("/classes", function(req,res){
-	var classes = enrollments.classes;
-	var returner = JSON.parse(JSON.stringify(classes));
-	for(var i = 0; i < classes.length; i++){
-		if(req.session.user != null && returner[i].enrollment.indexOf(req.session.user.pid) >= 0){
-			returner[i].enrolled = true;
-		}else{
-			returner[i].enrolled = false;
-		}
-		var count = returner[i].enrollment.length;
-		returner[i].enrollment = count;
+app.get("/classes", Class.getClasses);
 
-	}
-		res.end(JSON.stringify(returner, null, '\t'));
-});
-
-app.get("/classes/:id", function(req,res){
-	var _class = enrollments.classes.filter(function(e){return e.id == parseInt(req.params.id)})[0];
-	_class = JSON.parse(JSON.stringify(_class));
-	var users = require("./controllers/users.js").getUsers(function(users){
-		var classes = [];
-		if(req.session.user != null){
-			_class.enrolled = false;
-		}
-		for(var i = 0; i < users.length; i++){
-			if(_class.enrollment.indexOf(users[i].pid) >= 0){
-				users[i].password = "";
-				classes.push(users[i]);
-				if(req.session.user != null && req.session.user.pid == users[i].pid){
-					_class.enrolled = true;
-				}
-			}
-		}
-
-		_class.info = schedules[_class.id];
-		_class.enrollment = classes;
-		console.log(_class);
-		res.end(
-			JSON.stringify(
-				_class
-				)
-			);
-	});
-
-})
+app.get("/classes/:id",Class.getClasses)
 

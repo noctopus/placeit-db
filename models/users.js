@@ -17,4 +17,4 @@ var UserSchema = new Schema({
     password : String
 });
 
-mongoose.model('User', UserSchema);
+module.exports = mongoose.model('User', UserSchema);
