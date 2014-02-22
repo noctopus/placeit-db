@@ -1,4 +1,7 @@
-lab4
+Place-It DB
 ====
 
-Lab 4: Programming with Javascript
+Place-It DB for CSE 110
+Group 4
+
+Heroku URL: placeit-db-group4.herokuapp.com
