@@ -8,33 +8,35 @@ exports.getAllPlaceIts = function(req, res) {
 }
 
 exports.getPlaceIt = function(req, res) {
-	PlaceIts.find({id : req.params.id}, 
+	PlaceIts.find({_id : req.params.id, user_id : req.session.user.pid},  
 		function(err,data){
 			res.json(data);
 	});
 }
 
 exports.addPlaceIt = function(req, res) {
-	var placeit = new PlaceIt(req.body);
+	req.body.user_id = req.session.user.pid;
+	var placeit = new PlaceIts(req.body);
 	placeit.save(function(err) {
 		console.log(err);
-		res.end();
+		res.redirect("/placeits");
 	});
 }
 
 exports.updatePlaceIt = function(req,res) {
-	PlaceIt.update({id : req.body.id}, {active_date : req.body.active_date},
+	PlaceIts.update({_id : req.body.id}, 
+		{active_date : req.body.active_date},
 		function(err,data) {
 			console.log(err);
-			res.end();
+			res.redirect("/placeits");
 		});
 }
 
 exports.deletePlaceIt = function(req,res) {
-	var placeit = PlaceIts.find({id : req.params.id});
+	var placeit = PlaceIts.find({_id : req.body.id});
 	placeit.remove(function(err) {
 		console.log(err);
-		res.end();
+		res.redirect("/placeits");
 	});
 }
 

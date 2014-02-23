@@ -2,7 +2,7 @@
 
 <html>
 <head>
-	<title>WebReg Pro by Yellow Fellows</title>	
+	<title>Place-It DB by Group 4</title>	
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
@@ -60,7 +60,10 @@
            </li>
            {{/if}}
            {{#if loggedin}}
-           <button class="btn btn-default" style="margin-top:5px;" data-bind="click: logout">Log Out </button>
+           <form method="POST" action="/logout">
+            <button class="btn btn-default" style="margin-top:5px;" data-bind="click: logout">Log Out </button>
+          </form>
+           
            {{/if}}
          </ul>
        </div><!-- /.container-fluid -->
@@ -95,12 +98,113 @@
 
           </form>
 
+          
+
         </div>
       </div>
+
     </div>
   </div>
 </div>
 <!-- END LOG-IN MODAL -->
+
+<div>
+  {{#if loginFail}}
+  
+    <div id="loginfail" class="alert alert-danger">
+      Login failed. Please try again.
+    </div>
+  {{/if}}
+  {{#if notloggedin}}
+    <div id ="loginpls" class="alert alert-warning">Please log in to create or edit Place-Its.
+    </div>
+  {{/if}}
+  
+
+  </div>
+
+<!-- FORM FOR CREATING A PLACE-IT -->
+  <div>
+    <h3>Create a Place-It</h3>
+    <form class="form-inline" role="form" method="POST" action="/placeits">
+      <div class="form-group">
+        <label>Title:</label>
+        <input type="text" name="title" class="form-control" id="placeit_title" placeholder="">
+      </div>
+      <br>
+      <div class="form-group">
+        <label>Description:</label>
+        <input type="text" name="description" class="form-control" id="placeit_description" placeholder="">
+      </div>
+      <br>
+      <div class="form-group">
+        <label>Latitude:</label>
+        <input type="text" name="latitude" class="form-control" id="placeit_latitude" placeholder="">
+      </div>
+      <br>
+      <div class="form-group">
+        <label>Longitude:</label>
+        <input type="text" name="longitude" class="form-control" id="placeit_longitude" placeholder="">
+      </div>
+      <br>
+      <div class="form-group">
+        <label>Active Date:</label>
+        <input type="text" name="active_date" class="form-control" id="placeit_active_date" placeholder="">
+      </div>
+      <br>
+      <div class="form-group">
+        <label>Start Week:</label>
+        <input type="text" name="start_week" class="form-control" id="placeit_start_week" placeholder="">
+      </div>
+      <br>
+      <div class="form-group">
+        <label>Day:</label>
+        <input type="text" name="day" class="form-control" id="placeit_day" placeholder="">
+      </div>
+      <br>
+      <div class="form-group">
+        <label>Week:</label>
+        <input type="text" name="week" class="form-control" id="placeit_week" placeholder="">
+      </div>
+      <br>
+      <div class="form-group">
+        <label>Category:</label>
+        <input type="text" name="category" class="form-control" id="placeit_category" placeholder="">
+      </div>
+      <br>
+      <button type="submit" class="btn btn-default">Submit</button>
+    </form>
+  </div>
+
+    <!-- FORM FOR UPDATING PLACE-IT -->
+  <div>
+    <h3>Update a Place-It</h3>
+    <form class="form-inline" role="form" method="POST" action="/placeits/update">
+      <div class="form-group">
+        <label>Place-It ID</label>
+        <input type="text" name="id" class="form-control" id="placeit_id" placeholder="Place-It ID">
+      </div>
+      <br>
+      <div class="form-group">
+        <label>New Active Date</label>
+        <input type="text" name="active_date" class="form-control" id="placeit_active_date" placeholder="">
+      </div>
+      <br>
+      <button type="submit" class="btn btn-default">Submit</button>
+    </form>
+  </div>
+
+    <!-- FORM FOR DELETING PLACE-IT -->
+  <div>
+    <h3>Delete a Place-It</h3>
+    <form class="form-inline" role="form" method="POST" action="/placeits/delete">
+      <div class="form-group">
+        <label>Delete a Place-It:</label>
+        <input type="text" name="id" class="form-control" id="placeit_id" placeholder="Place-It ID">
+      </div><br>
+      <button type="submit" class="btn btn-default">Submit</button>
+    </form>
+  </div>
 
 
 
