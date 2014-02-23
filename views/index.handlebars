@@ -41,101 +41,16 @@
       </style>
     </head>
     <script>
-    $(document).ready(function(){
-      toastr.options.showDuration = 50;
-      var ViewModel = new IndexViewModel(IndexModel, document.getElementById("container"));
-      ViewModel.initialize();
-    });
+    
     </script>
     <body class="container" id="container">
 
-<!-- MODAL VIEW FOR FOLLOWING CLASSES -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title" id="myModalLabel">Follow a Class </h4><br> 
-        <input type="text" class="form-control" data-bind="value : searchQuery, valueUpdate:'afterkeydown'" placeholder="Search class here">
-      </div>
-
-      <!-- Display classes that match the search query -->
-      <div class="modal-body" data-bind="visible:searchQuery().length > 0">
-        <div data-bind="visible:searchClasses().length == 0">
-        <h5 class="text-center">No classes match your query.</h5>
-        </div>
-        <div class="panel-body">
-          <table class="table table-striped table-condensed">
-            <tbody data-bind="foreach : searchClasses()">
-              <tr>
-                <td> <span data-bind="text : name"></span></td>
-              </tr>
-              <tr>
-                <td data-bind="css : {'warning' : enrollment() >= max_enrollment-49}, text :'Enrollments : ' +  enrollment() + '/' + max_enrollment"></td>
-              </tr>
-              <tr>
-                <td>
-                  <button data-bind="info : $data" class="btn btn-info"> INFO </button>                        
-                  <button class="btn btn-success"   
-                  data-bind="toggle : $data, text : followed()? 'Unfollow' : 'Follow'" >
-                  </button>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-
-      <!-- Accordian list of all classes -->
-      <div class="modal-body" data-bind="foreach : Object.keys(groupedClasses()), visible:searchQuery().length == 0">
-        <div class="panel-group" id="accordion">
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              <h4 class="panel-title">
-                <a data-toggle="collapse" data-bind="text : $data, attr : {href : '#'+$data.slice(0,4)}" data-parent="#accordion" >
-                </a>
-              </h4>
-            </div>
-            <div data-bind="attr : {id : $data.slice(0,4)}" class="panel-collapse collapse">
-
-              <div class="panel-body">
-                <table class="table table-striped table-condensed">
-                  <tbody data-bind="foreach : $parent.groupedClasses()[$data]">
-                    <tr>
-                      <td> <span data-bind="text : name"></span></td>
-                    </tr>
-                    <tr>
-                      <td data-bind="css : {'warning' : enrollment() >= max_enrollment-5}, text :'Enrollments : ' +  enrollment() + '/' + max_enrollment"></td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <button data-bind="info : $data" class="btn btn-info"> INFO </button>                        
-                        <button class="btn btn-success"   
-                        data-bind="toggle : $data, text : followed()? 'Unfollow' : 'Follow'" >
-                        </button>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-
-            </div>
-          </div>
-        </div>
-    </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-    </div>
-  </div>
-</div>
-</div>
-<!-- MODAL -->
-
+      <!-- NAV BAR -->
       <nav class="navbar navbar-default"  style="margin-top:10px;" role="navigation">
         <div class="container-fluid">
           <!-- Brand and toggle get grouped for better mobile display -->
           <div class="navbar-header">
-            <a class="navbar-brand" href="/">Web Reg <sup> 2.0 </sup></a>
+            <a class="navbar-brand" href="/">Place-It DB</a>
           </div>
 
           <ul class="nav navbar-nav navbar-right">
@@ -150,9 +65,10 @@
          </ul>
        </div><!-- /.container-fluid -->
      </nav>
+     <!-- END NAV BAR -->
 
 
-  <!-- LOG-IN MODAL -->
+     <!-- LOG-IN MODAL -->
      <div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -186,78 +102,12 @@
 </div>
 <!-- END LOG-IN MODAL -->
 
-<div class="classholder">
-  {{#if loginFail}}
-  
-    <div id="loginfail" class="alert alert-danger">
-      Login failed. Please try again.
-    </div>
-  {{/if}}
-
-  <div data-bind="if : viewedClasses().length == 0">
-    <div class="alert alert-warning">You aren't following any classes yet. Follow one now!</div>
-  </div>
-
-  {{#if notloggedin}}
-  <div id ="loginpls" class="alert alert-warning">To enroll in a class, please log in or sign up.
-  </div>
-  {{/if}}
-  <div data-bind="foreach: viewedClasses()">
-
-    <div class="alert alert-success">
-      <div class="row">
-
-        <div class="col-md-2">
-          <div data-bind="html : '<b>' + name + '</b>'"></div>
-        </div>
-
-        <div class="col-md-4">
-          <div data-bind="html : '<small> Taught by ' + instructor + '</small>'"></div>
-        </div>
-        <div class="col-md-2">
-          <div data-bind="html : '<small> Cluster :  ' + group + '</small>'"></div>
-        </div>
-        <div class="col-md-1">
-          <div data-bind="css : {'warning' : enrollment() >= max_enrollment-5}, text : enrollment() + '/' + max_enrollment"></div>
-        </div>
-
-        <div class="col-md-3">
-          <button data-bind="click : $parent.getInfo" class="btn btn-info">Info</button>
-          <button data-bind="click : $parent.toggle" class="btn btn btn-primary">Unfollow</button>
-          <button data-bind="visible : {{#if notloggedin}} false {{/if}} {{#if loggedin}} true {{/if}}, click : $parent.toggleClass, css: {'btn-success': !enrolled(), 'btn-danger': enrolled() }" class="btn">
-            <span data-bind="visible: !enrolled()">Enroll</span>
-            <span data-bind="visible: enrolled()">Drop</span>
-          </button>
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
-
-  <button class="btn btn-info"  data-toggle="modal" data-target="#myModal">Follow a class</button>
-
-  <!-- MODAL -->
-  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-          <h4 class="modal-title" id="myModalLabel">Follow a Class</h4>
-        </div>
-    <!--  <div class="modal-body">
-        <div style="width:100%; height:100%; "data-bind="gradechart : ''"></div>
-      </div>-->
-      <div class="modal-body" data-bind="foreach : Object.keys(groupedClasses())">
 
 
 
 
-
-
-</body>
+      </body>
 
 
 
-</html>
+      </html>
