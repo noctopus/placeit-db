@@ -40,6 +40,14 @@ exports.deletePlaceIt = function(req,res) {
 	});
 }
 
+exports.isLoggedIn = function(req,res) {
+	var isLoggedIn = false;
+	if (req.session.user != null) {
+		isLoggedIn = true;
+	}
+	res.json(isLoggedIn);
+}
+
 
 
 

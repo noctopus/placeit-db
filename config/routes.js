@@ -25,6 +25,8 @@ app.post("/placeits", placeits.addPlaceIt);
 app.post("/placeits/update", placeits.updatePlaceIt);
 app.post("/placeits/delete", placeits.deletePlaceIt);
 
+app.get("/isLoggedIn", placeits.isLoggedIn);
+
 /*
 app.get("/placeits/view", function(req, res) {
 	res.render("placeits");
